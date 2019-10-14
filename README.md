@@ -1,5 +1,5 @@
 # Album
-1.This is a Android album demo implemented without any third-party libraries 
+1.This is a Android album demo implemented without any third-party libraries.   
 2.Using completely Kotlin code to implement.
 
 # Features
