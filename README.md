@@ -1,5 +1,6 @@
 # Album
-This is a Android album demo implemented without any third-party libraries 
+1.This is a Android album demo implemented without any third-party libraries 
+2.Using completely Kotlin code to implement.
 
 # Features
 1. Load all the images and videos files on the external storage.
