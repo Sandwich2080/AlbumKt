@@ -3,6 +3,9 @@
 2.Using completely Kotlin code to implement.
 
 # Features
+
+(Plan to implement the following features)
+
 1. Load all the images and videos files on the external storage.
 2. make the files into categories by date.
 3. Image decoding and memory cache.
