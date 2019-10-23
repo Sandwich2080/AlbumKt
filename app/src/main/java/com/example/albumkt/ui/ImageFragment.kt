@@ -8,11 +8,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.GridView
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import com.example.albumkt.R
 import com.example.albumkt.util.MediaFile
 import com.example.albumkt.util.MediaLoader
@@ -32,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class ImageFragment : Fragment() {
 
-    private val TAG:String = ImageFragment.javaClass.simpleName
+    private val TAG: String = ImageFragment.javaClass.simpleName
     // Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -44,7 +41,7 @@ class ImageFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG,"onCreate")
+        Log.d(TAG, "onCreate")
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -61,78 +58,17 @@ class ImageFragment : Fragment() {
         return gridView
     }
 
-    class FileAdapter:BaseAdapter{
-
-        class ViewHolder{
-            lateinit var imageView: ImageView
-        }
-
-        lateinit var act: Activity
-
-        lateinit var imageList: ArrayList<MediaFile>
-
-        lateinit var inflater: LayoutInflater
-
-        constructor() : super()
-
-        constructor(act:Activity,imageList: ArrayList<MediaFile>){
-            this.act = act
-            this.imageList = imageList
-            this.inflater = LayoutInflater.from(this.act)
-        }
-
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
-            var viewHolder:ViewHolder
-            var retView:View
-
-            if (convertView==null){
-                retView = inflater.inflate(R.layout.layout_image_item,null,false) as ImageView
-
-                viewHolder = ViewHolder()
-                viewHolder.imageView = retView
-
-                retView.tag = viewHolder
-
-            }else{
-                retView = convertView as ImageView
-                viewHolder = retView.tag as ViewHolder
-            }
-
-            Glide.with(act).load(imageList.get(position).path).into(viewHolder.imageView)
-
-
-            return retView
-
-        }
-
-        override fun getItem(position: Int): Any {
-            return imageList?.get(position)
-        }
-
-        override fun getItemId(position: Int): Long {
-            return imageList?.get(position)?.id
-        }
-
-        override fun getCount(): Int {
-            return imageList?.size
-        }
-    }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
         val loader = MediaLoader()
-        loader.imageLoadListener = object :MediaLoader.ImageLoadListener{
-            override fun onLoadComplete(fileList: ArrayList<MediaFile>?){
-                if (fileList!=null){
-                    fileAdapter = FileAdapter(activity as Activity,fileList)
+        loader.imageLoadListener = object : MediaLoader.ImageLoadListener {
+            override fun onLoadComplete(fileList: ArrayList<MediaFile>?) {
+                if (fileList != null) {
+                    fileAdapter = FileAdapter(activity as Activity, fileList)
                     gridView.adapter = fileAdapter
                 }
             }
+
             override fun onCancel() {
             }
         }
