@@ -1,4 +1,4 @@
-package com.example.albumkt
+package com.example.albumkt.base
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
