@@ -17,13 +17,13 @@ class MainActivity : BaseActivity() {
     lateinit var tlBottom: TabLayout
 
     lateinit var imageFragment: ImageFragment
-    private fun isImageFragmentInitialized() =::imageFragment.isInitialized
+    private fun isImageFragmentInitialized() = ::imageFragment.isInitialized
 
     lateinit var videoFragment: VideoFragment
-    private fun isVideoFragmentInitialized()=::videoFragment.isInitialized
+    private fun isVideoFragmentInitialized() = ::videoFragment.isInitialized
 
     lateinit var allFragment: AllFragment
-    private fun isAllFragmentInitialized()=::allFragment.isInitialized
+    private fun isAllFragmentInitialized() = ::allFragment.isInitialized
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,17 +70,17 @@ class MainActivity : BaseActivity() {
                 fragmentTransaction.show(imageFragment)
             }
             1 -> {
-               if (!isVideoFragmentInitialized()){
-                   videoFragment = VideoFragment()
-                   fragmentTransaction.add(R.id.container,videoFragment)
-               }
-               fragmentTransaction.show(videoFragment)
+                if (!isVideoFragmentInitialized()) {
+                    videoFragment = VideoFragment()
+                    fragmentTransaction.add(R.id.container, videoFragment)
+                }
+                fragmentTransaction.show(videoFragment)
             }
             2 -> {
 
-                if (!isAllFragmentInitialized()){
+                if (!isAllFragmentInitialized()) {
                     allFragment = AllFragment()
-                    fragmentTransaction.add(R.id.container,allFragment)
+                    fragmentTransaction.add(R.id.container, allFragment)
                 }
                 fragmentTransaction.show(allFragment)
             }
@@ -92,20 +92,20 @@ class MainActivity : BaseActivity() {
     fun hideFragment(tab: TabLayout.Tab) {
         var pos = tab.position
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        when(pos){
-            0->{
-                if (isImageFragmentInitialized()){
+        when (pos) {
+            0 -> {
+                if (isImageFragmentInitialized()) {
                     fragmentTransaction.hide(imageFragment)
                 }
             }
-            1->{
-                if (isVideoFragmentInitialized()){
+            1 -> {
+                if (isVideoFragmentInitialized()) {
                     fragmentTransaction.hide(videoFragment)
                 }
 
             }
-            2->{
-                if (isImageFragmentInitialized()){
+            2 -> {
+                if (isImageFragmentInitialized()) {
                     fragmentTransaction.hide(allFragment)
                 }
             }
