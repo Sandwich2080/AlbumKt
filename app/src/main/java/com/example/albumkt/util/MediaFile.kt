@@ -1,9 +1,9 @@
 package com.example.albumkt.util
 
 class MediaFile {
-     companion object{
-        val TYPE_IMAGE = 1
-        val TYPE_VIDEO = 0
+    companion object {
+        const val TYPE_IMAGE = 1
+        const val TYPE_VIDEO = 0
     }
 
     var id: Long = 0

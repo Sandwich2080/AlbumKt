@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:numColumns="3"
+    android:columnWidth="60dp"
+    android:horizontalSpacing="1px"
+    android:numColumns="4"
     android:stretchMode="columnWidth"
-    tools:context=".ui.ImageFragment" />
+    android:verticalSpacing="1px"
+    tools:context=".ui.ImageFragment"
+    android:background="@android:color/darker_gray"
+    />

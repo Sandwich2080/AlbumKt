@@ -35,19 +35,19 @@ class FileAdapter:BaseAdapter{
         var retView: View
 
         if (convertView==null){
-            retView = inflater.inflate(R.layout.layout_image_item,null,false) as ImageView
+            retView = inflater.inflate(R.layout.layout_image_item,null,false)
 
             viewHolder = ViewHolder()
-            viewHolder.imageView = retView
+            viewHolder.imageView = retView.findViewById(R.id.iv_photo)
 
             retView.tag = viewHolder
 
         }else{
-            retView = convertView as ImageView
+            retView = convertView
             viewHolder = retView.tag as ViewHolder
         }
 
-        Glide.with(act).load(imageList.get(position).path).diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(true).into(viewHolder.imageView)
+        Glide.with(act).load(imageList.get(position).path).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(true).into(viewHolder.imageView)
 
         return retView
 
