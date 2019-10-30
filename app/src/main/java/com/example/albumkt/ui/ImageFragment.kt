@@ -27,7 +27,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ImageFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ImageFragment : Fragment() {
+open class ImageFragment : Fragment() {
 
     private val TAG: String = ImageFragment.javaClass.simpleName
     // Rename and change types of parameters

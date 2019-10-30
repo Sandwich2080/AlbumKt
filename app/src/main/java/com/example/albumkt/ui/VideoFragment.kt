@@ -1,26 +1,51 @@
 package com.example.albumkt.ui
 
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridView
 
 import com.example.albumkt.R
+import com.example.albumkt.util.MediaFile
+import com.example.albumkt.util.MediaLoader
 
 /**
  * A simple [Fragment] subclass.
  */
 class VideoFragment : Fragment() {
 
+    private lateinit var gridView: GridView
+
+    private lateinit var fileAdapter: FileAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video, container, false)
+        gridView = inflater.inflate(R.layout.fragment_video, container, false) as GridView
+        return gridView
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val loader = MediaLoader()
+        loader.videoLoadListener = object : MediaLoader.VideoLoadListener {
+            override fun onLoadComplete(fileList: ArrayList<MediaFile>?) {
+                if (fileList != null) {
+                    fileAdapter = FileAdapter(activity as Activity, fileList)
+                    gridView.adapter = fileAdapter
+                }
+            }
 
+            override fun onCancel() {
+            }
+        }
+        loader.loadVideos(activity as Context)
+    }
 }

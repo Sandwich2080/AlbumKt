@@ -11,57 +11,70 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.albumkt.R
 import com.example.albumkt.util.MediaFile
 
-class FileAdapter:BaseAdapter{
+class FileAdapter : BaseAdapter {
 
-    class ViewHolder{
+    class ViewHolder {
         lateinit var imageView: ImageView
+        lateinit var ivPlay: ImageView
     }
 
     var act: Activity
 
-    var imageList: ArrayList<MediaFile>
+    var fileList: ArrayList<MediaFile>
 
     var inflater: LayoutInflater
 
-    constructor(act: Activity, imageList: ArrayList<MediaFile>){
+    constructor(act: Activity, fileList: ArrayList<MediaFile>) {
         this.act = act
-        this.imageList = imageList
+        this.fileList = fileList
         this.inflater = LayoutInflater.from(this.act)
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-        var viewHolder:ViewHolder
+        var viewHolder: ViewHolder
         var retView: View
 
-        if (convertView==null){
-            retView = inflater.inflate(R.layout.layout_image_item,null,false)
+        if (convertView == null) {
+            retView = inflater.inflate(R.layout.layout_image_item, null, false)
 
             viewHolder = ViewHolder()
             viewHolder.imageView = retView.findViewById(R.id.iv_photo)
+            viewHolder.ivPlay = retView.findViewById(R.id.iv_play)
 
             retView.tag = viewHolder
 
-        }else{
+        } else {
             retView = convertView
             viewHolder = retView.tag as ViewHolder
         }
 
-        Glide.with(act).load(imageList.get(position).path).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(true).into(viewHolder.imageView)
+        when (fileList[position].type) {
+            MediaFile.TYPE_VIDEO -> {
+                viewHolder.ivPlay.visibility = View.VISIBLE
+            }
+            else -> {
+                viewHolder.ivPlay.visibility = View.GONE
+            }
+        }
+
+        Glide.with(act).load(fileList[position].path).centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(true)
+            .into(viewHolder.imageView)
 
         return retView
 
     }
 
     override fun getItem(position: Int): Any {
-        return imageList?.get(position)
+        return fileList?.get(position)
     }
 
     override fun getItemId(position: Int): Long {
-        return imageList?.get(position)?.id
+        return fileList?.get(position)?.id
     }
 
     override fun getCount(): Int {
-        return imageList?.size
+        return fileList?.size
     }
 }
