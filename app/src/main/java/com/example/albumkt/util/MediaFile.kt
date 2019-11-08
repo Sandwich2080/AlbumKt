@@ -1,6 +1,46 @@
 package com.example.albumkt.util
 
-class MediaFile {
+import android.os.Parcel
+import android.os.Parcelable
+import android.os.Parcelable.Creator
+
+
+class MediaFile : Parcelable {
+
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    override fun writeToParcel(out: Parcel, flags: Int) {
+        out.writeLong(id)
+        out.writeString(path)
+        out.writeString(thumbnailPath)
+        out.writeInt(type)
+        out.writeLong(dateModified)
+    }
+
+    @JvmField
+    val CREATOR: Creator<MediaFile?> = object : Creator<MediaFile?> {
+        override fun createFromParcel(`in`: Parcel): MediaFile? {
+            return MediaFile(`in`)
+        }
+
+        override fun newArray(size: Int): Array<MediaFile?> {
+            return arrayOfNulls<MediaFile>(size)
+        }
+    }
+
+    private fun MediaFile(`in`: Parcel): MediaFile {
+        id = `in`.readLong()
+        path = `in`.readString()
+        thumbnailPath = `in`.readString()
+        type = `in`.readInt()
+        dateModified = `in`.readLong()
+        return MediaFile(id, path, thumbnailPath, type, dateModified)
+    }
+
+
     companion object {
         const val TYPE_IMAGE = 1
         const val TYPE_VIDEO = 0
