@@ -3,6 +3,7 @@ package com.example.albumkt.ui
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.GridView
 
 import com.example.albumkt.R
+import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 import com.example.albumkt.util.MediaLoader
 import java.util.*
@@ -42,7 +44,20 @@ class AllFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         gridView = inflater.inflate(R.layout.fragment_image, container, false) as GridView
+
+        gridView.setOnItemClickListener { _, _, position, _ ->
+            onItemClick(position)
+        }
+
         return gridView
+    }
+
+    private fun onItemClick(position: Int) {
+        var it = Intent()
+        it.putParcelableArrayListExtra(Constants.FILE_LIST, fileAdapter.fileList)
+        it.putExtra(Constants.CLICK_POSITION, position)
+        activity?.let { act -> it.setClass(act, PreviewActivity::class.java) }
+        activity?.startActivity(it)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

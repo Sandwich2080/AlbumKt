@@ -1,14 +1,13 @@
 package com.example.albumkt.util
 
-import android.os.Parcel
 import android.os.Parcelable
-import android.os.Parcelable.Creator
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class MediaFile(var id: Long, var path: String?, var thumbnailPath: String?, var type: Int, var dateModified: Long) : Parcelable {
 
 
-class MediaFile : Parcelable {
-
-
-    override fun describeContents(): Int {
+    /*override fun describeContents(): Int {
         return 0
     }
 
@@ -38,7 +37,7 @@ class MediaFile : Parcelable {
         type = `in`.readInt()
         dateModified = `in`.readLong()
         return MediaFile(id, path, thumbnailPath, type, dateModified)
-    }
+    }*/
 
 
     companion object {
@@ -46,7 +45,7 @@ class MediaFile : Parcelable {
         const val TYPE_VIDEO = 0
     }
 
-    var id: Long = 0
+    /*var id: Long = 0
 
     var path: String? = null
 
@@ -62,5 +61,5 @@ class MediaFile : Parcelable {
         this.thumbnailPath = thumbnailPath
         this.type = type
         this.dateModified = dateModified
-    }
+    }*/
 }
