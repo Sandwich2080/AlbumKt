@@ -4,8 +4,6 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_album"
@@ -14,7 +12,7 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true"
         >
-        <activity android:name=".ui.PreviewActivity"></activity>
+        <activity android:name=".ui.PreviewActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>

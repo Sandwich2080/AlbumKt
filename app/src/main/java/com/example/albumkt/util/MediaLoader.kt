@@ -115,7 +115,7 @@ class MediaLoader {
                         val dateTaken =
                             cursor.getLong(cursor.getColumnIndex(MediaStore.Video.VideoColumns.DATE_TAKEN))
 
-                        var videoFile =
+                        val videoFile =
                             MediaFile(
                                 id,
                                 path,
