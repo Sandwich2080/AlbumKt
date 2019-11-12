@@ -8,17 +8,17 @@ import androidx.loader.content.Loader
 
 class MediaLoader {
 
-    lateinit var imageList: ArrayList<MediaFile>
+    private lateinit var imageList: ArrayList<MediaFile>
 
-    lateinit var videoList: ArrayList<MediaFile>
+    private lateinit var videoList: ArrayList<MediaFile>
 
     lateinit var imageLoadListener: ImageLoadListener
 
     lateinit var videoLoadListener: VideoLoadListener
 
-    lateinit var imagesLoader: CursorLoader
+    private lateinit var imagesLoader: CursorLoader
 
-    lateinit var videosLoader: CursorLoader
+    private lateinit var videosLoader: CursorLoader
 
     /**
      *
@@ -30,7 +30,7 @@ class MediaLoader {
             null,
             MediaStore.Images.Media.MIME_TYPE + "=? or " + MediaStore.Images.Media.MIME_TYPE + "=?",
             arrayOf("image/jpeg", "image/png"),
-            MediaStore.Images.Media.DATE_MODIFIED + " desc"
+            MediaStore.Images.Media.DATE_TAKEN + " desc"
         )
 
         // register imageLoadListener
@@ -70,7 +70,7 @@ class MediaLoader {
                         cursor.close()
                     }
 
-                    imageLoadListener?.onLoadComplete(imageList)
+                    imageLoadListener.onLoadComplete(imageList)
 
                 }
 
@@ -79,7 +79,7 @@ class MediaLoader {
         imagesLoader.registerOnLoadCanceledListener(Loader.OnLoadCanceledListener {
 
             fun(loader: Loader<Cursor>) {
-                imageLoadListener?.onCancel()
+                imageLoadListener.onCancel()
             }
         })
 
@@ -95,7 +95,7 @@ class MediaLoader {
             null,
             MediaStore.Video.Media.MIME_TYPE + "=? ",
             arrayOf("video/mp4"),
-            MediaStore.Video.VideoColumns.DATE_MODIFIED + " desc"
+            MediaStore.Video.VideoColumns.DATE_TAKEN + " desc"
         )
 
         videosLoader.registerListener(videosLoader.id, Loader.OnLoadCompleteListener(
@@ -129,7 +129,7 @@ class MediaLoader {
                     } while (cursor.moveToNext())
                     cursor.close()
 
-                    videoLoadListener?.onLoadComplete(videoList)
+                    videoLoadListener.onLoadComplete(videoList)
                 }
             }
         ))
@@ -137,7 +137,7 @@ class MediaLoader {
         videosLoader.registerOnLoadCanceledListener(
             Loader.OnLoadCanceledListener {
                 fun(loader: Loader<Cursor>) {
-                    videoLoadListener?.onCancel()
+                    videoLoadListener.onCancel()
 
                 }
 
@@ -150,9 +150,7 @@ class MediaLoader {
     }
 
     fun cancel() {
-        if (imagesLoader != null) {
-            imagesLoader.cancelLoadInBackground()
-        }
+        imagesLoader.cancelLoadInBackground()
     }
 
     interface ImageLoadListener {

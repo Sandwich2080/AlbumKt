@@ -1,6 +1,7 @@
 package com.example.albumkt.ui
 
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -103,7 +104,7 @@ class AllFragment : Fragment() {
             return
         }
 
-        var totalList: ArrayList<MediaFile> = ArrayList()
+        val totalList: ArrayList<MediaFile> = ArrayList()
         if (isImageFileListInitialized()) {
             totalList.addAll(imageFileList)
         }
@@ -111,7 +112,8 @@ class AllFragment : Fragment() {
             totalList.addAll(videoFileList)
         }
 
-        resortTask = object : AsyncTask<Void, Void, ArrayList<MediaFile>>() {
+        resortTask = @SuppressLint("StaticFieldLeak")
+        object : AsyncTask<Void, Void, ArrayList<MediaFile>>() {
             override fun doInBackground(vararg params: Void?): ArrayList<MediaFile> {
                 Collections.sort(totalList, object : Comparator<MediaFile> {
                     override fun compare(o1: MediaFile?, o2: MediaFile?): Int {
