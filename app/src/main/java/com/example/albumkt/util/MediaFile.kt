@@ -4,7 +4,13 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class MediaFile(var id: Long, var path: String?, var thumbnailPath: String?, var type: Int, var dateModified: Long) : Parcelable {
+data class MediaFile(var id: Long,
+                     var path: String?,
+                     var thumbnailPath: String?,
+                     var type: Int,
+                     var dateModified: Long,
+                     var dateAdded:Long,
+                     var dateTaken:Long) : Parcelable {
 
 
     /*override fun describeContents(): Int {

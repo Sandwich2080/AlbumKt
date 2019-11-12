@@ -116,7 +116,7 @@ class AllFragment : Fragment() {
                 Collections.sort(totalList, object : Comparator<MediaFile> {
                     override fun compare(o1: MediaFile?, o2: MediaFile?): Int {
                         if (o1 != null && o2 != null) {
-                            return o2.dateModified.compareTo(o1.dateModified)
+                            return o2.dateAdded.compareTo(o1.dateAdded)
                         }
                         return 0
                     }

@@ -47,8 +47,21 @@ class MediaLoader {
                                 cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
                             val dateModified =
                                 cursor.getLong(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_MODIFIED))
+                            val dateAdded =
+                                cursor.getLong(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_ADDED))
+                            val dateTaken =
+                                cursor.getLong(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATE_TAKEN))
+
                             val mediaFile =
-                                MediaFile(id, path, null, MediaFile.TYPE_IMAGE, dateModified)
+                                MediaFile(
+                                    id,
+                                    path,
+                                    null,
+                                    MediaFile.TYPE_IMAGE,
+                                    dateModified,
+                                    dateAdded,
+                                    dateTaken
+                                )
 
                             imageList.add(mediaFile)
 
@@ -97,9 +110,21 @@ class MediaLoader {
                             cursor.getString(cursor.getColumnIndex(MediaStore.Video.VideoColumns.DATA))
                         val dateModified =
                             cursor.getLong(cursor.getColumnIndex(MediaStore.Video.VideoColumns.DATE_MODIFIED))
+                        val dateAdded =
+                            cursor.getLong(cursor.getColumnIndex(MediaStore.Video.VideoColumns.DATE_ADDED))
+                        val dateTaken =
+                            cursor.getLong(cursor.getColumnIndex(MediaStore.Video.VideoColumns.DATE_TAKEN))
 
                         var videoFile =
-                            MediaFile(id, path, null, MediaFile.TYPE_VIDEO, dateModified)
+                            MediaFile(
+                                id,
+                                path,
+                                null,
+                                MediaFile.TYPE_VIDEO,
+                                dateModified,
+                                dateAdded,
+                                dateTaken
+                            )
                         videoList.add(videoFile)
                     } while (cursor.moveToNext())
                     cursor.close()
