@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <paths>
-        <external-path name="com.example.albumkt.filepath" path="." />
+        <!--<external-path
+            name="com.example.albumkt.filepath"
+            path="." />-->
+        <root-path
+            name="com.example.albumkt.filepath"
+            path="" />
     </paths>
 </resources>

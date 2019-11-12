@@ -86,23 +86,23 @@ class PreviewFragment : Fragment() {
             it.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
             var uri: Uri?
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                uri = context?.let { it1 ->
+            uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                context?.let { it1 ->
                     FileProvider.getUriForFile(
                         it1,
-                        "你的包名.fileprovider",
+                        it1.packageName + ".fileprovider",
                         File(file?.path)
                     )
                 }
             } else {
-                uri = Uri.fromFile(File(file?.path));
+                Uri.fromFile(File(file?.path));
             }
 
             it.setDataAndType(uri, "video/*")
             activity?.startActivity(it)
 
-        }catch (e:Exception){
-
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
