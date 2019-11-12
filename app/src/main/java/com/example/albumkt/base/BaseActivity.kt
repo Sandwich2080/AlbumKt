@@ -1,8 +1,10 @@
 package com.example.albumkt.base
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.RequiresApi
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -10,6 +12,7 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     fun hideSystemUI() {
         // Enables regular immersive mode.
         // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
@@ -27,6 +30,7 @@ open class BaseActivity : AppCompatActivity() {
 
     // Shows the system bars by removing all the flags
 // except for the ones that make the content appear under the system bars.
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     fun showSystemUI() {
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
