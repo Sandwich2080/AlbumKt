@@ -2,9 +2,13 @@ package com.example.albumkt.ui
 
 import android.os.Bundle
 import android.widget.FrameLayout
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import butterknife.BindView
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseActivity
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 
 
@@ -16,28 +20,56 @@ class MainActivity : BaseActivity() {
     @BindView(R.id.tl_bottom)
     lateinit var tlBottom: TabLayout
 
-    lateinit var imageFragment: ImageFragment
+    private lateinit var imageFragment: ImageFragment
     private fun isImageFragmentInitialized() = ::imageFragment.isInitialized
 
-    lateinit var videoFragment: VideoFragment
+    private lateinit var videoFragment: VideoFragment
     private fun isVideoFragmentInitialized() = ::videoFragment.isInitialized
 
-    lateinit var allFragment: AllFragment
+    private lateinit var allFragment: AllFragment
     private fun isAllFragmentInitialized() = ::allFragment.isInitialized
+
+    private lateinit var navigationView: NavigationView
+
+    private lateinit var drawerLayout: DrawerLayout
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initToolBar()
+        initNavigation();
+        initMainContent()
+    }
+
+    private fun initToolBar() {
+        // Note that the Toolbar defined in the layout has the id "my_toolbar"
+        val toolbar = findViewById<Toolbar>(R.id.my_toolbar)
+        setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START, true)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
+    }
+
+    private fun initNavigation() {
+        navigationView = findViewById(R.id.navigation)
+        drawerLayout = findViewById(R.id.drawerLayout)
+    }
+
+    private fun initMainContent() {
         container = findViewById(R.id.container)
         tlBottom = findViewById(R.id.tl_bottom)
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         imageFragment = ImageFragment()
         fragmentTransaction.add(R.id.container, imageFragment)
-        fragmentTransaction.commit()
         fragmentTransaction.show(imageFragment)
+        fragmentTransaction.commit()
 
         val tabSelectedListener = object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
@@ -58,8 +90,10 @@ class MainActivity : BaseActivity() {
         tlBottom.addOnTabSelectedListener(tabSelectedListener)
     }
 
+
+
     fun switchFragment(tab: TabLayout.Tab) {
-        var pos = tab.position
+        val pos = tab.position
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         when (pos) {
             0 -> {
@@ -90,7 +124,7 @@ class MainActivity : BaseActivity() {
     }
 
     fun hideFragment(tab: TabLayout.Tab) {
-        var pos = tab.position
+        val pos = tab.position
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         when (pos) {
             0 -> {
