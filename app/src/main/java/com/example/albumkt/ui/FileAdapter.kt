@@ -67,14 +67,14 @@ class FileAdapter : BaseAdapter {
     }
 
     override fun getItem(position: Int): Any {
-        return fileList?.get(position)
+        return fileList.get(position)
     }
 
     override fun getItemId(position: Int): Long {
-        return fileList?.get(position)?.id
+        return fileList.get(position).id
     }
 
     override fun getCount(): Int {
-        return fileList?.size
+        return fileList.size
     }
 }

@@ -37,7 +37,7 @@ class PreviewActivity : BaseActivity() {
     /**
      * Switch between fullscreen and non-fullscreen
      */
-    open fun switchScreen() {
+    fun switchScreen() {
         if (isFullScreen()) {
             //setNormalScreen()
             showSystemUI()

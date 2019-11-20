@@ -8,10 +8,6 @@ import androidx.annotation.RequiresApi
 
 open class BaseActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     fun hideSystemUI() {
         // Enables regular immersive mode.

@@ -1,7 +1,6 @@
 package com.example.albumkt.ui
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -12,16 +11,11 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.example.albumkt.R
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 import com.github.chrisbanes.photoview.PhotoView
 import java.io.File
-import java.lang.Exception
 
 
 /**
@@ -81,11 +75,11 @@ class PreviewFragment : Fragment() {
     // need to optimize
     private fun playVideo() {
         try {
-            var it = Intent(Intent.ACTION_VIEW)
+            val it = Intent(Intent.ACTION_VIEW)
             it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             it.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
-            var uri: Uri?
+            val uri: Uri?
             uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 context?.let { it1 ->
                     FileProvider.getUriForFile(
@@ -95,7 +89,7 @@ class PreviewFragment : Fragment() {
                     )
                 }
             } else {
-                Uri.fromFile(File(file?.path));
+                Uri.fromFile(File(file?.path))
             }
 
             it.setDataAndType(uri, "video/*")
