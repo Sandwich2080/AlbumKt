@@ -11,29 +11,19 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.albumkt.R
 import com.example.albumkt.util.MediaFile
 
-class FileAdapter : BaseAdapter {
+class FileAdapter(var act: Activity, var fileList: ArrayList<MediaFile>) : BaseAdapter() {
 
     class ViewHolder {
         lateinit var imageView: ImageView
         lateinit var ivPlay: ImageView
     }
 
-    var act: Activity
-
-    var fileList: ArrayList<MediaFile>
-
-    var inflater: LayoutInflater
-
-    constructor(act: Activity, fileList: ArrayList<MediaFile>) {
-        this.act = act
-        this.fileList = fileList
-        this.inflater = LayoutInflater.from(this.act)
-    }
+    private var inflater: LayoutInflater = LayoutInflater.from(this.act)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-        var viewHolder: ViewHolder
-        var retView: View
+        val viewHolder: ViewHolder
+        val retView: View
 
         if (convertView == null) {
             retView = inflater.inflate(R.layout.layout_image_item, null, false)
@@ -67,11 +57,11 @@ class FileAdapter : BaseAdapter {
     }
 
     override fun getItem(position: Int): Any {
-        return fileList.get(position)
+        return fileList[position]
     }
 
     override fun getItemId(position: Int): Long {
-        return fileList.get(position).id
+        return fileList[position].id
     }
 
     override fun getCount(): Int {

@@ -54,7 +54,7 @@ class AllFragment : Fragment() {
     }
 
     private fun onItemClick(position: Int) {
-        var it = Intent()
+        val it = Intent()
         it.putParcelableArrayListExtra(Constants.FILE_LIST, fileAdapter.fileList)
         it.putExtra(Constants.CLICK_POSITION, position)
         activity?.let { act -> it.setClass(act, PreviewActivity::class.java) }
