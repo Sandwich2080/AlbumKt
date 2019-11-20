@@ -33,7 +33,7 @@ private const val ARG_PARAM2 = "param2"
  */
 open class ImageFragment : Fragment() {
 
-    private val TAG: String = ImageFragment.javaClass.simpleName
+    private val TAG: String = ImageFragment::class.java.simpleName
     // Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null

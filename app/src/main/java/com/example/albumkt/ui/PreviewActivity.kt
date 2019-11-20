@@ -23,8 +23,8 @@ class PreviewActivity : BaseActivity() {
         viewPager = findViewById(R.id.view_pager)
         setTitle(R.string.preview_title)
 
-        var clickPos = intent.getIntExtra(Constants.CLICK_POSITION, 0)
-        var fileList: ArrayList<MediaFile> = intent.getParcelableArrayListExtra(Constants.FILE_LIST)
+        val clickPos = intent.getIntExtra(Constants.CLICK_POSITION, 0)
+        val fileList: ArrayList<MediaFile> = intent.getParcelableArrayListExtra(Constants.FILE_LIST)
 
         previewAdapter = PreviewAdapter(supportFragmentManager, fileList)
         viewPager.adapter = previewAdapter
