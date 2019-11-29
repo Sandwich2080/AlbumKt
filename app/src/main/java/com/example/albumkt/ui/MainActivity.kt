@@ -92,6 +92,23 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_edit -> {
+
+            }
+            R.id.action_scan -> {
+
+            }
+            R.id.action_settings -> {
+
+            }
+            R.id.action_feedback -> {
+
+            }
+            else -> {
+
+            }
+        }
         return super.onOptionsItemSelected(item)
     }
 

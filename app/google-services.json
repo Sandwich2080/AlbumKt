@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "641289934428",
+    "firebase_url": "https://zdhvpn010.firebaseio.com",
+    "project_id": "zdhvpn010",
+    "storage_bucket": "zdhvpn010.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641289934428:android:67f95813e7c11e4438f899",
+        "android_client_info": {
+          "package_name": "com.example.albumkt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641289934428-43nj8664ei52uaouqtq51l9b8vivknpu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.albumkt",
+            "certificate_hash": "b1215455b9e27866b14134222cba110ae0b87a24"
+          }
+        },
+        {
+          "client_id": "641289934428-3megnkakrjkkqbagf3scanfo8ds3nmoj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlAfVypu8DNrgBotPVUpk-7fptd8dd5oQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641289934428-3megnkakrjkkqbagf3scanfo8ds3nmoj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

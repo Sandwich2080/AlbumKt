@@ -12,6 +12,11 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true"
         >
+
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="barcode" />
+
         <activity android:name=".ui.PreviewActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".ui.MainActivity">
