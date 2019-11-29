@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/action_edit"
+        android:icon="@mipmap/menu_edit"
+        android:title="Edit"
+        app:showAsAction="ifRoom"
+        />
+
+    <!-- Settings, should always be in the overflow -->
+    <item
+        android:id="@+id/action_scan"
+        android:icon="@mipmap/menu_scan"
+        android:title="Scan"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@mipmap/menu_setting"
+        android:title="Setting"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_feedback"
+        android:icon="@mipmap/menu_feedback"
+        android:title="Feedback"
+        app:showAsAction="withText" />
+
+</menu>

@@ -1,6 +1,8 @@
 package com.example.albumkt.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -54,6 +56,43 @@ class MainActivity : BaseActivity() {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
         }
+
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        showMenuIcon(menu)
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    /**
+     * Show icons of the action bar menu items
+     * @param menu
+     */
+    private fun showMenuIcon(menu: Menu?) {
+        if (menu != null) {
+            if (menu::class.java.simpleName == "MenuBuilder") {
+                try {
+                    val m = menu::class.java.getDeclaredMethod(
+                        "setOptionalIconsVisible",
+                        Boolean::class.java
+                    )
+                    m.isAccessible = true
+                    m.invoke(menu, true)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_more, menu)
+        //menu?.findItem(R.id.action_settings)?.isVisible = false
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initNavigation() {
@@ -89,7 +128,6 @@ class MainActivity : BaseActivity() {
 
         tlBottom.addOnTabSelectedListener(tabSelectedListener)
     }
-
 
 
     fun switchFragment(tab: TabLayout.Tab) {

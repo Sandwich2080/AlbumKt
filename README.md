@@ -13,7 +13,7 @@
 
 # Todo List
 1. Video Player.
-2. QRCode Scanning.
+2. QRCode Scanning (Open links and show text content).
 3. Third party login (including QQ, WeChat,Weibo,Facebook).
 4. Push Message.
 5. File management (pdf,office format files,apk,etc.).
