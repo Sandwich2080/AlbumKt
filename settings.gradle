@@ -1,2 +1,6 @@
 include ':app'
 rootProject.name='AlbumKt'
+include ':barcode'
+include ':chooserx'
+include ':lintchecks'
+include ':lint'

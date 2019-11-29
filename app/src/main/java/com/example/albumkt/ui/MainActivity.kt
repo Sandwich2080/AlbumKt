@@ -1,5 +1,6 @@
 package com.example.albumkt.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,6 +13,7 @@ import com.example.albumkt.R
 import com.example.albumkt.base.BaseActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
+//import com.google.firebase.samples.apps.mlkit.EntryChoiceActivity
 
 
 class MainActivity : BaseActivity() {
@@ -97,7 +99,7 @@ class MainActivity : BaseActivity() {
 
             }
             R.id.action_scan -> {
-
+                //startActivity(Intent(this, EntryChoiceActivity::class.java))
             }
             R.id.action_settings -> {
 

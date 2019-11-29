@@ -12,7 +12,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.albumkt"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -53,6 +53,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-ml-vision-object-detection-model:19.0.3'
     // AutoML model
     implementation 'com.google.firebase:firebase-ml-vision-automl:18.0.3'
+    //implementation project(path: ':barcode')
 
 
     testImplementation 'junit:junit:4.12'

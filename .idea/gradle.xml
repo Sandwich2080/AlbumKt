@@ -12,6 +12,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/barcode" />
+            <option value="$PROJECT_DIR$/chooserx" />
+            <option value="$PROJECT_DIR$/lint" />
+            <option value="$PROJECT_DIR$/lintchecks" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

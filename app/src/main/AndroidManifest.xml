@@ -13,9 +13,9 @@
         android:largeHeap="true"
         >
 
-        <meta-data
+        <!--<meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
-            android:value="barcode" />
+            android:value="barcode" />-->
 
         <activity android:name=".ui.PreviewActivity" />
         <activity android:name=".base.BaseActivity" />
@@ -38,6 +38,17 @@
                 />
 
         </provider>
+
+        <!-- barcode start-->
+        <activity
+            android:name="com.google.firebase.samples.apps.mlkit.EntryChoiceActivity"
+            />
+        <activity android:name="com.google.firebase.samples.apps.mlkit.java.ChooserActivity" />
+
+        <activity android:name="com.google.firebase.samples.apps.mlkit.kotlin.ChooserActivity" />
+        <!-- barcode end-->
+
+
 
     </application>
 
