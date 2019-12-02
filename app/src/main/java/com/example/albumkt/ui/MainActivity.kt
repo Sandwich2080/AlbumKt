@@ -100,8 +100,10 @@ class MainActivity : BaseActivity() {
 
             }
             R.id.action_scan -> {
-                //startActivity(Intent(this, EntryChoiceActivity::class.java))  // Firebase barcode
                 startActivity(Intent(this,ScanActivity::class.java)) // zxing barcode
+            }
+            R.id.action_scan2 -> {
+                startActivity(Intent(this, EntryChoiceActivity::class.java))  // Firebase barcode
             }
             R.id.action_settings -> {
 

@@ -12,9 +12,15 @@
     <!-- Settings, should always be in the overflow -->
     <item
         android:id="@+id/action_scan"
-        android:icon="@mipmap/menu_scan"
-        android:title="Scan"
-        app:showAsAction="ifRoom"
+        android:icon="@mipmap/menu_scan1"
+        android:title="Scan (Zxing)"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_scan2"
+        android:icon="@mipmap/menu_scan2"
+        android:title="Scan (Firebase)"
+        app:showAsAction="never"
         />
     <item
         android:id="@+id/action_settings"
