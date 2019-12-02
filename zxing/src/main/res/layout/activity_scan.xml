@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScanActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@mipmap/ic_back"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Scanning Result"
+        app:titleTextColor="@android:color/white" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_rectangle"
+        android:hint="No result yet"
+        android:padding="5dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_copy"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="25dp"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:text="Copy the content"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_result" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

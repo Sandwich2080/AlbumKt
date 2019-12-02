@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import butterknife.BindView
+import com.albumkt.barcode.zxing.ScanActivity
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseActivity
 import com.google.android.material.navigation.NavigationView
@@ -99,7 +100,8 @@ class MainActivity : BaseActivity() {
 
             }
             R.id.action_scan -> {
-                startActivity(Intent(this, EntryChoiceActivity::class.java))
+                //startActivity(Intent(this, EntryChoiceActivity::class.java))  // Firebase barcode
+                startActivity(Intent(this,ScanActivity::class.java)) // zxing barcode
             }
             R.id.action_settings -> {
 
