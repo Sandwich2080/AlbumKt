@@ -12,6 +12,7 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.albumkt.R
+import com.example.albumkt.base.BaseFragment
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 import com.github.chrisbanes.photoview.PhotoView
@@ -23,7 +24,7 @@ import java.io.File
  * Use the [PreviewFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class PreviewFragment : Fragment() {
+class PreviewFragment : BaseFragment() {
     private var file: MediaFile? = null
 
     private var photoView: PhotoView? = null

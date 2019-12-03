@@ -1,7 +1,6 @@
 package com.example.albumkt.ui
 
 import android.os.Bundle
-import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.viewpager.widget.ViewPager
@@ -9,7 +8,6 @@ import com.example.albumkt.R
 import com.example.albumkt.base.BaseActivity
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
-import java.lang.Exception
 
 class PreviewActivity : BaseActivity() {
 

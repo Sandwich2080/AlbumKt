@@ -7,13 +7,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
-
+import androidx.fragment.app.Fragment
 import com.example.albumkt.R
+import com.example.albumkt.base.BaseFragment
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 import com.example.albumkt.util.MediaLoader
@@ -23,7 +23,7 @@ import kotlin.collections.ArrayList
 /**
  * A simple [Fragment] subclass.
  */
-class AllFragment : Fragment() {
+class AllFragment : BaseFragment() {
 
     private lateinit var gridView: GridView
 

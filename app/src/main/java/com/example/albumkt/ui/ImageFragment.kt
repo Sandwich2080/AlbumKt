@@ -9,11 +9,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.example.albumkt.R
-import com.example.albumkt.R2.id.parent
+import com.example.albumkt.base.BaseFragment
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 import com.example.albumkt.util.MediaLoader
@@ -31,7 +30,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ImageFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-open class ImageFragment : Fragment() {
+open class ImageFragment : BaseFragment() {
 
     private val TAG: String = ImageFragment::class.java.simpleName
     // Rename and change types of parameters
