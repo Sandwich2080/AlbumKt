@@ -52,6 +52,14 @@ open class ImageFragment : BaseFragment() {
 
     }
 
+    override fun init() {
+        loadData()
+    }
+
+    override fun permissionsNeeded(): Array<String> {
+        return arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -74,6 +82,10 @@ open class ImageFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //loadData()
+    }
+
+    private fun loadData() {
         val loader = MediaLoader()
         loader.imageLoadListener = object : MediaLoader.ImageLoadListener {
             override fun onLoadComplete(fileList: ArrayList<MediaFile>?) {

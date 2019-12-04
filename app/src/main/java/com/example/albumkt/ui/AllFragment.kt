@@ -39,6 +39,14 @@ class AllFragment : BaseFragment() {
     private lateinit var videoFileList: ArrayList<MediaFile>
     private fun isVideoFileListInitialized() = ::videoFileList.isInitialized
 
+    override fun permissionsNeeded(): Array<String> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun init() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

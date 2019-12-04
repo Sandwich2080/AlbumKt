@@ -61,4 +61,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    implementation 'pub.devrel:easypermissions:3.0.0'
 }

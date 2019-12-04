@@ -25,6 +25,14 @@ class VideoFragment : BaseFragment() {
 
     private lateinit var fileAdapter: FileAdapter
 
+    override fun init() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun permissionsNeeded(): Array<String> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
