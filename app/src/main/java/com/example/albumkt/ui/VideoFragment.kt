@@ -26,11 +26,11 @@ class VideoFragment : BaseFragment() {
     private lateinit var fileAdapter: FileAdapter
 
     override fun init() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        loadData()
     }
 
     override fun permissionsNeeded(): Array<String> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
     override fun onCreateView(
@@ -57,6 +57,9 @@ class VideoFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun loadData() {
         val loader = MediaLoader()
         loader.videoLoadListener = object : MediaLoader.VideoLoadListener {
             override fun onLoadComplete(fileList: ArrayList<MediaFile>?) {

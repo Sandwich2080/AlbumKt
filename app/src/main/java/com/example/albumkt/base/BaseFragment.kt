@@ -1,5 +1,6 @@
 package com.example.albumkt.base
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -14,7 +15,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults,this)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 
     abstract fun permissionsNeeded(): Array<String>
@@ -24,21 +25,31 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         requestPermissions()
     }
 
+    /**
+     * Dynamically request runtime permission
+     */
     private fun requestPermissions() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            init()
+            return
+        }
+
         val permissions = permissionsNeeded()
-        if (EasyPermissions.hasPermissions(context!!, *permissions)) {
+        if (permissions.isEmpty() || EasyPermissions.hasPermissions(context!!, *permissions)) {
             init()
         } else {
-            EasyPermissions.requestPermissions(this,"Permission Request",hashCode(),*permissions)
+            EasyPermissions.requestPermissions(this, "Permission Request", hashCode(), *permissions)
         }
     }
 
-    // Do init operations
+    /**
+     * Do init operations after runtime permission granted.
+     */
     abstract fun init()
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        for (perm in perms){
-            Toast.makeText(context, "Permission[$perm] denied!",Toast.LENGTH_SHORT).show()
+        for (perm in perms) {
+            Toast.makeText(context, "Permission[$perm] denied!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -47,3 +58,5 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     }
 
 }
+
+

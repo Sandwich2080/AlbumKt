@@ -40,11 +40,11 @@ class AllFragment : BaseFragment() {
     private fun isVideoFileListInitialized() = ::videoFileList.isInitialized
 
     override fun permissionsNeeded(): Array<String> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
     override fun init() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        loadData()
     }
 
     override fun onCreateView(
@@ -71,7 +71,9 @@ class AllFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
 
+    private fun loadData() {
         val loader = MediaLoader()
         loader.imageLoadListener = object : MediaLoader.ImageLoadListener {
             override fun onLoadComplete(fileList: ArrayList<MediaFile>?) {
@@ -102,7 +104,6 @@ class AllFragment : BaseFragment() {
             }
         }
         loader.loadVideos(activity as Context)
-
     }
 
     private lateinit var resortTask: AsyncTask<Void, Void, ArrayList<MediaFile>>
