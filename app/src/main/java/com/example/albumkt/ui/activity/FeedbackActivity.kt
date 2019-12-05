@@ -1,13 +1,15 @@
 package com.example.albumkt.ui.activity
 
-import android.os.Bundle
 import com.example.albumkt.R
-import com.example.albumkt.base.BaseActivity
+import com.example.albumkt.util.FragmentIds
 
-class FeedbackActivity : BaseActivity() {
+class FeedbackActivity : CommonActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_feedback)
+    override fun fragmentId(): Int {
+        return FragmentIds.FEEDBACK
+    }
+
+    override fun fragmentTitleId(): Int {
+        return R.string.feedback
     }
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.CommonActivity">
+    tools:context=".ui.activity.CommonActivity"
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -17,7 +18,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@mipmap/ic_back"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@android:color/white" />
+        app:titleTextColor="@android:color/white"
+
+        />
 
     <FrameLayout
         android:id="@+id/container"

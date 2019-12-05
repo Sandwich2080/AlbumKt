@@ -1,13 +1,16 @@
 package com.example.albumkt.ui.activity
 
-import android.os.Bundle
 import com.example.albumkt.R
-import com.example.albumkt.base.BaseActivity
+import com.example.albumkt.util.FragmentIds
 
-class SettingActivity : BaseActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setting)
+class SettingActivity : CommonActivity() {
+    override fun fragmentId(): Int {
+        return FragmentIds.SETTING
     }
+
+    override fun fragmentTitleId(): Int {
+        return R.string.setting
+    }
+
+
 }

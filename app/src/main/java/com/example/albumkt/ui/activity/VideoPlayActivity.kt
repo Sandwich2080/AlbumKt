@@ -1,13 +1,15 @@
 package com.example.albumkt.ui.activity
 
-import android.os.Bundle
 import com.example.albumkt.R
-import com.example.albumkt.base.BaseActivity
+import com.example.albumkt.util.FragmentIds
 
-class VideoPlayActivity : BaseActivity() {
+class VideoPlayActivity : CommonActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_video_play)
+    override fun fragmentId(): Int {
+        return FragmentIds.VIDEO_PLAYER
+    }
+
+    override fun fragmentTitleId(): Int {
+        return R.string.video_player
     }
 }
