@@ -13,8 +13,10 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
+import com.example.albumkt.ui.activity.VideoPlayActivity
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
+import com.example.albumkt.util.SettingsConfig
 import com.github.chrisbanes.photoview.PhotoView
 import java.io.File
 
@@ -80,8 +82,11 @@ class PreviewFragment : BaseFragment() {
 
     }
 
-    // need to optimize
     private fun playVideo() {
+        if (SettingsConfig.ins.isInternalPlayer()){
+            playWithInternalPlayer()
+            return
+        }
         try {
             val it = Intent(Intent.ACTION_VIEW)
             it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -106,6 +111,12 @@ class PreviewFragment : BaseFragment() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    private fun playWithInternalPlayer(){
+        val it = Intent(activity,VideoPlayActivity::class.java)
+        it.putExtra(Constants.MEDIA_FILE, file)
+        activity?.startActivity(it)
     }
 
     companion object {

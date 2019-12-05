@@ -63,4 +63,7 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
     implementation 'pub.devrel:easypermissions:3.0.0'
+
+    //MediaPlayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.10.8'
 }

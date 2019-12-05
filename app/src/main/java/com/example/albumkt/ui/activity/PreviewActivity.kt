@@ -3,6 +3,8 @@ package com.example.albumkt.ui.activity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.widget.TextViewCompat
 import androidx.viewpager.widget.ViewPager
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseActivity
@@ -33,6 +35,21 @@ class PreviewActivity : BaseActivity() {
 
         viewPager.currentItem = clickPos
 
+        val tvIndicator = findViewById<AppCompatTextView>(R.id.tv_indicator)
+        tvIndicator.apply {
+            text = String.format("%d/%d", clickPos, fileList.size)
+        }
+
+        viewPager.apply {
+
+            addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
+                override fun onPageSelected(position: Int) {
+                    tvIndicator.text = String.format("%d/%d", position, fileList.size)
+                }
+
+            })
+        }
+
         hideSystemUI()
     }
 
@@ -61,7 +78,7 @@ class PreviewActivity : BaseActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
-        }catch (e:Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
@@ -73,7 +90,7 @@ class PreviewActivity : BaseActivity() {
                 WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
                 WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
             )
-        }catch (e:Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }

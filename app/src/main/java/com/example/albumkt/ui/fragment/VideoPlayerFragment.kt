@@ -1,13 +1,23 @@
 package com.example.albumkt.ui.fragment
 
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
+import com.example.albumkt.util.Constants
+import com.example.albumkt.util.MediaFile
+import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.source.MediaSource
+import com.google.android.exoplayer2.source.ProgressiveMediaSource.Factory
+import com.google.android.exoplayer2.ui.PlayerView
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.util.Util
+import java.io.File
+
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -22,12 +32,35 @@ class VideoPlayerFragment : BaseFragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var playerView: PlayerView
+
     override fun permissionsNeeded(): Array<String> {
         return arrayOf()
     }
 
     override fun init() {
-        // TODO: 2019/12/5
+        //0. Data
+        val mediaFile = arguments?.getParcelable<MediaFile>(Constants.MEDIA_FILE)
+
+        //1. init
+        val player = ExoPlayerFactory.newSimpleInstance(context)
+        playerView.player = player
+
+        //2. prepare the player
+        // Produces DataSource instances through which media data is loaded.
+        // Produces DataSource instances through which media data is loaded.
+        val dataSourceFactory: DefaultDataSourceFactory = DefaultDataSourceFactory(
+            context,
+            Util.getUserAgent(context, context?.applicationInfo?.name)
+        )
+
+        // This is the MediaSource representing the media to be played.
+        // This is the MediaSource representing the media to be played.
+        val videoSource: MediaSource = Factory(dataSourceFactory)
+            .createMediaSource(Uri.fromFile(File(mediaFile?.path)))
+        // Prepare the player with the source.
+        // Prepare the player with the source.
+        player.prepare(videoSource)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +76,9 @@ class VideoPlayerFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video_player, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_video_player, container, false)
+        playerView = rootView.findViewById(R.id.playerView)
+        return rootView
     }
 
     companion object {

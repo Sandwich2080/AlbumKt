@@ -26,10 +26,13 @@ abstract class CommonActivity : BaseActivity() {
         //supportActionBar?.setTitle(fragmentTitleId()) //works well
     }
 
+    abstract fun fragmentArgs():Bundle?
+
     private fun setupContainer() {
         val contentFrag = FragmentUtil.get(fragmentId())
 
         if (contentFrag != null) {
+            contentFrag.arguments = fragmentArgs()
             supportFragmentManager.beginTransaction().apply {
                 add(R.id.container, contentFrag)
                 show(contentFrag)

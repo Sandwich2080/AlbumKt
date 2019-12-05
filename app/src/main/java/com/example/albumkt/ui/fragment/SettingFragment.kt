@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
+import androidx.appcompat.widget.SwitchCompat
 
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
+import com.example.albumkt.util.SettingsConfig
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -21,12 +24,14 @@ private const val ARG_PARAM2 = "param2"
 class SettingFragment : BaseFragment() {
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var internalPlayerSwitch: SwitchCompat
+
     override fun permissionsNeeded(): Array<String> {
         return arrayOf()
     }
 
     override fun init() {
-        // TODO: 2019/12/5
+        internalPlayerSwitch.isChecked = SettingsConfig.ins.isInternalPlayer()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +47,12 @@ class SettingFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_setting, container, false)
+        internalPlayerSwitch = rootView.findViewById<SwitchCompat>(R.id.internal_player_switch)
+        internalPlayerSwitch.setOnCheckedChangeListener { _, isChecked ->
+            SettingsConfig.ins.setInternalPlayer(isChecked)
+        }
+        return rootView
     }
 
     companion object {
