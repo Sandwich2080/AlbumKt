@@ -57,10 +57,6 @@ class VideoFragment : BaseFragment() {
         activity?.startActivity(it)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     private fun loadData() {
         val loader = MediaLoader()
         loader.videoLoadListener = object : MediaLoader.VideoLoadListener {

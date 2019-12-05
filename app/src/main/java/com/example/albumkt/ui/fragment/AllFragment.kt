@@ -71,10 +71,6 @@ class AllFragment : BaseFragment() {
         activity?.startActivity(it)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     private fun loadData() {
         val loader = MediaLoader()
         loader.imageLoadListener = object : MediaLoader.ImageLoadListener {
