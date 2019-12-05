@@ -12,7 +12,7 @@ class SettingsConfig private constructor() {
         val ins = SettingsConfig()
     }
 
-    private lateinit var settingSharePref: SharedPreferences
+    private var settingSharePref: SharedPreferences
 
     init {
         settingSharePref =
