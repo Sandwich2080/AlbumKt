@@ -1,4 +1,4 @@
-package com.example.albumkt.ui
+package com.example.albumkt.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,9 @@ import butterknife.BindView
 import com.albumkt.barcode.zxing.ScanActivity
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseActivity
+import com.example.albumkt.ui.fragment.AllFragment
+import com.example.albumkt.ui.fragment.ImageFragment
+import com.example.albumkt.ui.fragment.VideoFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.samples.apps.mlkit.EntryChoiceActivity
@@ -100,16 +103,16 @@ class MainActivity : BaseActivity() {
 
             }
             R.id.action_scan -> {
-                startActivity(Intent(this,ScanActivity::class.java)) // zxing barcode
+                startActivity(Intent(this, ScanActivity::class.java)) // zxing barcode
             }
             R.id.action_scan2 -> {
                 startActivity(Intent(this, EntryChoiceActivity::class.java))  // Firebase barcode
             }
             R.id.action_settings -> {
-
+                startActivity(Intent(this, SettingActivity::class.java))
             }
             R.id.action_feedback -> {
-
+                startActivity(Intent(this, FeedbackActivity::class.java))
             }
             else -> {
 
@@ -159,14 +162,16 @@ class MainActivity : BaseActivity() {
         when (pos) {
             0 -> {
                 if (!isImageFragmentInitialized()) {
-                    imageFragment = ImageFragment()
+                    imageFragment =
+                        ImageFragment()
                     fragmentTransaction.add(R.id.container, imageFragment)
                 }
                 fragmentTransaction.show(imageFragment)
             }
             1 -> {
                 if (!isVideoFragmentInitialized()) {
-                    videoFragment = VideoFragment()
+                    videoFragment =
+                        VideoFragment()
                     fragmentTransaction.add(R.id.container, videoFragment)
                 }
                 fragmentTransaction.show(videoFragment)

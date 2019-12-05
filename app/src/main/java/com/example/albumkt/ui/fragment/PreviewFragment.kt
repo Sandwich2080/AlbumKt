@@ -1,4 +1,4 @@
-package com.example.albumkt.ui
+package com.example.albumkt.ui.fragment
 
 import android.content.Intent
 import android.net.Uri
@@ -25,16 +25,16 @@ import java.io.File
  * create an instance of this fragment.
  */
 class PreviewFragment : BaseFragment() {
-    private var file: MediaFile? = null
+    private lateinit var file: MediaFile
 
-    private var photoView: PhotoView? = null
+    private lateinit var photoView: PhotoView
 
-    private var ivPlay: AppCompatImageView? = null
+    private lateinit var ivPlay: AppCompatImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            file = it.getParcelable(Constants.MEDIA_FILE)
+            file = it.getParcelable(Constants.MEDIA_FILE)!!
         }
     }
 
@@ -58,23 +58,23 @@ class PreviewFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        photoView?.let {
+        photoView.let {
             Glide.with(view.context).load(Uri.fromFile(File(file?.path))).centerInside().into(it)
         }
 
-        if (file?.type == MediaFile.TYPE_VIDEO) {
+        if (file.type == MediaFile.TYPE_VIDEO) {
 
-            photoView?.isZoomable=false
+            photoView.isZoomable=false
 
-            ivPlay?.visibility = View.VISIBLE
-            ivPlay?.setOnClickListener {
+            ivPlay.visibility = View.VISIBLE
+            ivPlay.setOnClickListener {
                 playVideo()
             }
         } else {
-            ivPlay?.visibility = View.GONE
+            ivPlay.visibility = View.GONE
         }
 
-        photoView?.setOnClickListener {
+        photoView.setOnClickListener {
             //(activity as PreviewActivity).switchScreen()
         }
 
@@ -93,11 +93,11 @@ class PreviewFragment : BaseFragment() {
                     FileProvider.getUriForFile(
                         it1,
                         it1.packageName + ".fileprovider",
-                        File(file?.path)
+                        File(file.path)
                     )
                 }
             } else {
-                Uri.fromFile(File(file?.path))
+                Uri.fromFile(File(file.path))
             }
 
             it.setDataAndType(uri, "video/*")

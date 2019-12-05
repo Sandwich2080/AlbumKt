@@ -1,10 +1,11 @@
-package com.example.albumkt.ui
+package com.example.albumkt.ui.adapter
 
 import android.util.SparseArray
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.albumkt.ui.fragment.PreviewFragment
 import com.example.albumkt.util.MediaFile
 
 class PreviewAdapter : FragmentPagerAdapter {
@@ -24,7 +25,11 @@ class PreviewAdapter : FragmentPagerAdapter {
 
     override fun getItem(position: Int): Fragment {
         if (frags[position] == null) {
-            frags.put(position, PreviewFragment.newInstance(fileList[position]))
+            frags.put(position,
+                PreviewFragment.newInstance(
+                    fileList[position]
+                )
+            )
         }
         return frags[position]
     }

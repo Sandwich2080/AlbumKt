@@ -1,4 +1,4 @@
-package com.example.albumkt.ui
+package com.example.albumkt.ui.fragment
 
 
 import android.annotation.SuppressLint
@@ -14,6 +14,8 @@ import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
+import com.example.albumkt.ui.activity.PreviewActivity
+import com.example.albumkt.ui.adapter.FileAdapter
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 import com.example.albumkt.util.MediaLoader
@@ -139,7 +141,10 @@ class AllFragment : BaseFragment() {
             override fun onPostExecute(result: ArrayList<MediaFile>?) {
                 super.onPostExecute(result)
                 if (result != null) {
-                    fileAdapter = FileAdapter(activity as Activity, result)
+                    fileAdapter = FileAdapter(
+                        activity as Activity,
+                        result
+                    )
                     gridView.adapter = fileAdapter
                 }
             }

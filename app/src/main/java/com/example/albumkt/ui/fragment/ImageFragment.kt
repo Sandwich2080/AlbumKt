@@ -1,4 +1,4 @@
-package com.example.albumkt.ui
+package com.example.albumkt.ui.fragment
 
 import android.app.Activity
 import android.content.Context
@@ -13,6 +13,8 @@ import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
+import com.example.albumkt.ui.activity.PreviewActivity
+import com.example.albumkt.ui.adapter.FileAdapter
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 import com.example.albumkt.util.MediaLoader
@@ -90,7 +92,10 @@ open class ImageFragment : BaseFragment() {
         loader.imageLoadListener = object : MediaLoader.ImageLoadListener {
             override fun onLoadComplete(fileList: ArrayList<MediaFile>?) {
                 if (fileList != null) {
-                    fileAdapter = FileAdapter(activity as Activity, fileList)
+                    fileAdapter = FileAdapter(
+                        activity as Activity,
+                        fileList
+                    )
                     gridView.adapter = fileAdapter
                 }
             }

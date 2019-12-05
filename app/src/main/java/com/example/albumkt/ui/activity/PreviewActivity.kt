@@ -1,4 +1,4 @@
-package com.example.albumkt.ui
+package com.example.albumkt.ui.activity
 
 import android.os.Bundle
 import android.view.Window
@@ -6,6 +6,7 @@ import android.view.WindowManager
 import androidx.viewpager.widget.ViewPager
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseActivity
+import com.example.albumkt.ui.adapter.PreviewAdapter
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 
@@ -24,7 +25,10 @@ class PreviewActivity : BaseActivity() {
         val clickPos = intent.getIntExtra(Constants.CLICK_POSITION, 0)
         val fileList: ArrayList<MediaFile> = intent.getParcelableArrayListExtra(Constants.FILE_LIST)
 
-        previewAdapter = PreviewAdapter(supportFragmentManager, fileList)
+        previewAdapter = PreviewAdapter(
+            supportFragmentManager,
+            fileList
+        )
         viewPager.adapter = previewAdapter
 
         viewPager.currentItem = clickPos

@@ -8,6 +8,6 @@
     android:numColumns="4"
     android:stretchMode="columnWidth"
     android:verticalSpacing="1px"
-    tools:context=".ui.VideoFragment"
+    tools:context=".ui.fragment.VideoFragment"
     android:background="@android:color/darker_gray"
     />

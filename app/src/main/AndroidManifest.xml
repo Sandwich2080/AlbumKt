@@ -8,18 +8,21 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_album"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
         android:largeHeap="true"
-        >
-
-        <!--<meta-data
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.activity.CommonActivity"></activity>
+        <activity android:name=".ui.activity.VideoPlayActivity" />
+        <activity android:name=".ui.activity.FeedbackActivity" />
+        <activity android:name=".ui.activity.SettingActivity" />
+        <!--
+        <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
-            android:value="barcode" />-->
-
-        <activity android:name=".ui.PreviewActivity" />
+            android:value="barcode" />
+        -->
+        <activity android:name=".ui.activity.PreviewActivity" />
         <activity android:name=".base.BaseActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,28 +31,17 @@
         </activity>
 
         <provider
-            android:authorities="com.example.albumkt.fileprovider"
             android:name=".ui.AppFileProvider"
+            android:authorities="com.example.albumkt.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true"
-            >
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"
-                />
-
-        </provider>
-
-        <!-- barcode start-->
-        <activity
-            android:name="com.google.firebase.samples.apps.mlkit.EntryChoiceActivity"
-            />
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider> <!-- barcode start -->
+        <activity android:name="com.google.firebase.samples.apps.mlkit.EntryChoiceActivity" />
         <activity android:name="com.google.firebase.samples.apps.mlkit.java.ChooserActivity" />
-
         <activity android:name="com.google.firebase.samples.apps.mlkit.kotlin.ChooserActivity" />
-        <!-- barcode end-->
-
-
-
     </application>
 
 </manifest>

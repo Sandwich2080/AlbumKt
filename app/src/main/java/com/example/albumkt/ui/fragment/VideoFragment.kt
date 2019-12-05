@@ -1,4 +1,4 @@
-package com.example.albumkt.ui
+package com.example.albumkt.ui.fragment
 
 
 import android.app.Activity
@@ -12,6 +12,8 @@ import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
+import com.example.albumkt.ui.activity.PreviewActivity
+import com.example.albumkt.ui.adapter.FileAdapter
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 import com.example.albumkt.util.MediaLoader
@@ -64,7 +66,10 @@ class VideoFragment : BaseFragment() {
         loader.videoLoadListener = object : MediaLoader.VideoLoadListener {
             override fun onLoadComplete(fileList: ArrayList<MediaFile>?) {
                 if (fileList != null) {
-                    fileAdapter = FileAdapter(activity as Activity, fileList)
+                    fileAdapter = FileAdapter(
+                        activity as Activity,
+                        fileList
+                    )
                     gridView.adapter = fileAdapter
                 }
             }

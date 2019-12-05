@@ -1,4 +1,4 @@
-package com.example.albumkt.ui
+package com.example.albumkt.ui.adapter
 
 import android.app.Activity
 import android.view.LayoutInflater

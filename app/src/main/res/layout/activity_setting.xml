@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.PreviewActivity"
-    android:background="@android:color/background_dark"
-    >
-
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    tools:context=".ui.activity.SettingActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
