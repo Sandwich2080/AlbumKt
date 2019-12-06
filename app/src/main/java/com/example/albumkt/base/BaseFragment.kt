@@ -9,6 +9,10 @@ import pub.devrel.easypermissions.EasyPermissions
 
 abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
+    companion object{
+        const val PERMISSION_REQUEST_CODE = 0xff
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -38,7 +42,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         if (permissions.isEmpty() || EasyPermissions.hasPermissions(context!!, *permissions)) {
             init()
         } else {
-            EasyPermissions.requestPermissions(this, "Permission Request", hashCode(), *permissions)
+            EasyPermissions.requestPermissions(this, "Permission Request", PERMISSION_REQUEST_CODE, *permissions)
         }
     }
 
