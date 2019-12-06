@@ -37,9 +37,8 @@ class MediaLoader {
         imagesLoader.registerListener(
             imagesLoader.id, Loader.OnLoadCompleteListener(
                 fun(loader: Loader<Cursor>, cursor: Cursor?) {
-
+                    imageList = ArrayList()
                     if (cursor != null && cursor.moveToFirst()) {
-                        imageList = ArrayList()
                         do {
                             val id =
                                 cursor.getLong(cursor.getColumnIndex(MediaStore.Images.ImageColumns._ID))
@@ -101,8 +100,8 @@ class MediaLoader {
         videosLoader.registerListener(videosLoader.id, Loader.OnLoadCompleteListener(
 
             fun(loader: Loader<Cursor>, cursor: Cursor?) {
+                videoList = ArrayList()
                 if (cursor != null && cursor.moveToNext()) {
-                    videoList = ArrayList()
                     do {
                         val id =
                             cursor.getLong(cursor.getColumnIndex(MediaStore.Video.VideoColumns._ID))
@@ -128,9 +127,8 @@ class MediaLoader {
                         videoList.add(videoFile)
                     } while (cursor.moveToNext())
                     cursor.close()
-
-                    videoLoadListener.onLoadComplete(videoList)
                 }
+                videoLoadListener.onLoadComplete(videoList)
             }
         ))
 

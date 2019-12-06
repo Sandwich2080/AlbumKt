@@ -37,14 +37,14 @@ class PreviewActivity : BaseActivity() {
 
         val tvIndicator = findViewById<AppCompatTextView>(R.id.tv_indicator)
         tvIndicator.apply {
-            text = String.format("%d/%d", clickPos, fileList.size)
+            text = String.format("%d/%d", clickPos+1, fileList.size)
         }
 
         viewPager.apply {
 
             addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
                 override fun onPageSelected(position: Int) {
-                    tvIndicator.text = String.format("%d/%d", position, fileList.size)
+                    tvIndicator.text = String.format("%d/%d", position+1, fileList.size)
                 }
 
             })
