@@ -49,7 +49,7 @@ class VideoPlayerFragment : BaseFragment() {
         //2. prepare the player
         // Produces DataSource instances through which media data is loaded.
         // Produces DataSource instances through which media data is loaded.
-        val dataSourceFactory: DefaultDataSourceFactory = DefaultDataSourceFactory(
+        val dataSourceFactory = DefaultDataSourceFactory(
             context,
             Util.getUserAgent(context, context?.applicationInfo?.name)
         )
