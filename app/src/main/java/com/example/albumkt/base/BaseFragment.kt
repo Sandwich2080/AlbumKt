@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import pub.devrel.easypermissions.EasyPermissions
 
-abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks {
+abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermissions.RationaleCallbacks {
 
     companion object{
         const val PERMISSION_REQUEST_CODE = 0xff
@@ -61,6 +61,12 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         init()
     }
 
+    override fun onRationaleDenied(requestCode: Int) {
+    }
+
+    override fun onRationaleAccepted(requestCode: Int) {
+        init()
+    }
 }
 
 
