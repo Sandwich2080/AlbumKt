@@ -25,5 +25,8 @@ interface FragmentIds {
          */
         val FEEDBACK: Int
             get() = BASE + 3
+
+        val BARCODE_FEN: Int
+            get() = BASE + 4
     }
 }

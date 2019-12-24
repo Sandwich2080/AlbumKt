@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_gen"
+        android:layout_margin="10dp"
+        android:hint="@string/hint_content2gen"
+        android:background="@drawable/bg_rectangle"
+        android:padding="5dp"
+        android:gravity="start|top"
+        android:id="@+id/et_content"
+        android:drawablePadding="3dp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/generate"
+        app:layout_constraintTop_toBottomOf="@+id/et_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/btn_gen"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@color/white"
+        android:gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_gen"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:id="@+id/ll_gen_code"
+        android:background="@color/gray"
+        android:visibility="gone"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:layout_margin="10dp"
+            android:id="@+id/iv_qr_code"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/save2phone"
+            android:id="@+id/btn_save"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:background="@android:color/holo_red_dark"
+            android:textColor="@color/white"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

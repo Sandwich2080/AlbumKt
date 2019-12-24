@@ -75,7 +75,7 @@ class PreviewFragment : BaseFragment() {
 
         if (file.type == MediaFile.TYPE_VIDEO) {
 
-            photoView.isZoomable=false
+            photoView.isZoomable = false
 
             ivPlay.visibility = View.VISIBLE
             ivPlay.setOnClickListener {
@@ -89,7 +89,7 @@ class PreviewFragment : BaseFragment() {
             //(activity as PreviewActivity).switchScreen()
         }
 
-        if (file.type == MediaFile.TYPE_IMAGE){
+        if (file.type == MediaFile.TYPE_IMAGE) {
             photoView.setOnLongClickListener {
                 showLongClickDialog()
                 true
@@ -119,16 +119,18 @@ class PreviewFragment : BaseFragment() {
         }
     }
 
-    private fun start2Decode(){
+    private fun start2Decode() {
         file.path?.let {
-            BarcodeDecoder.decode(it,object :BarcodeDecoder.DecodeCallback{
+            BarcodeDecoder.decode(it, object : BarcodeDecoder.DecodeCallback {
                 override fun onStartDecode() {
                     // show loading dialog
 
                 }
 
                 override fun onDecodeResult(isBarcode: Boolean, resultText: String?) {
-                    if (TextUtils.isEmpty(resultText)){
+                    if (!isBarcode || TextUtils.isEmpty(resultText)) {
+                        Toast.makeText(context, R.string.no_recognized_result, Toast.LENGTH_SHORT)
+                            .show()
                         return
                     }
 
@@ -166,7 +168,7 @@ class PreviewFragment : BaseFragment() {
     }
 
     private fun playVideo() {
-        if (SettingsConfig.ins.isInternalPlayer()){
+        if (SettingsConfig.ins.isInternalPlayer()) {
             playWithInternalPlayer()
             return
         }
@@ -196,8 +198,8 @@ class PreviewFragment : BaseFragment() {
         }
     }
 
-    private fun playWithInternalPlayer(){
-        val it = Intent(activity,VideoPlayActivity::class.java)
+    private fun playWithInternalPlayer() {
+        val it = Intent(activity, VideoPlayActivity::class.java)
         it.putExtra(Constants.MEDIA_FILE, file)
         activity?.startActivity(it)
     }

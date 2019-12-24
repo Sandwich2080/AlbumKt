@@ -108,6 +108,9 @@ class MainActivity : BaseActivity() {
             R.id.action_scan2 -> {
                 startActivity(Intent(this, EntryChoiceActivity::class.java))  // Firebase barcode
             }
+            R.id.action_qr_code_gen->{
+                startActivity(Intent(this,BarcodeGenActivity::class.java))
+            }
             R.id.action_settings -> {
                 startActivity(Intent(this, SettingActivity::class.java))
             }

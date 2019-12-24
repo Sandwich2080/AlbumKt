@@ -30,7 +30,7 @@ class MediaLoader {
             null,
             MediaStore.Images.Media.MIME_TYPE + "=? or " + MediaStore.Images.Media.MIME_TYPE + "=?",
             arrayOf("image/jpeg", "image/png"),
-            MediaStore.Images.Media.DATE_TAKEN + " desc"
+            MediaStore.Images.Media.DATE_ADDED + " desc"
         )
 
         // register imageLoadListener
@@ -94,7 +94,7 @@ class MediaLoader {
             null,
             MediaStore.Video.Media.MIME_TYPE + "=? ",
             arrayOf("video/mp4"),
-            MediaStore.Video.VideoColumns.DATE_TAKEN + " desc"
+            MediaStore.Video.VideoColumns.DATE_ADDED + " desc"
         )
 
         videosLoader.registerListener(videosLoader.id, Loader.OnLoadCompleteListener(

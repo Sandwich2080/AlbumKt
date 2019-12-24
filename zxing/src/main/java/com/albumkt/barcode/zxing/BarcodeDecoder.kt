@@ -5,6 +5,7 @@ import android.os.AsyncTask
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import java.io.File
+import java.lang.Exception
 
 /**
  *  Decode QRCode or barcode from image
@@ -30,13 +31,19 @@ class BarcodeDecoder private constructor() {
             bitmap.getPixels(pixels, 0, outWidth, 0, 0, outWidth, outHeight)
 
             val source = RGBLuminanceSource(outWidth, outHeight, pixels)
-            val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
-            val reader = MultiFormatReader()
-            val result = reader.decode(binaryBitmap)
 
-            bitmap.recycle()
+            return try {
+                val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
+                val reader = MultiFormatReader()
+                val result = reader.decode(binaryBitmap)
 
-            return result
+                bitmap.recycle()
+
+                result
+            }catch (e:Exception){
+                null
+            }
+
         }
 
         @JvmStatic

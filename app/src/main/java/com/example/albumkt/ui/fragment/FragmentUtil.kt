@@ -18,6 +18,9 @@ class FragmentUtil {
                 FragmentIds.SETTING -> {
                     SettingFragment()
                 }
+                FragmentIds.BARCODE_FEN -> {
+                    BarcodeGenFragment()
+                }
                 else -> {
                     null
                 }
