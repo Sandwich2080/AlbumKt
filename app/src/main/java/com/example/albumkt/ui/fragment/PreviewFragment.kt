@@ -1,15 +1,24 @@
 package com.example.albumkt.ui.fragment
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import com.afollestad.materialdialogs.DialogCallback
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.list.listItems
+import com.albumkt.barcode.zxing.BarcodeDecoder
 import com.bumptech.glide.Glide
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
@@ -80,6 +89,80 @@ class PreviewFragment : BaseFragment() {
             //(activity as PreviewActivity).switchScreen()
         }
 
+        if (file.type == MediaFile.TYPE_IMAGE){
+            photoView.setOnLongClickListener {
+                showLongClickDialog()
+                true
+            }
+        }
+
+    }
+
+    private fun showLongClickDialog() {
+        context?.let {
+            MaterialDialog(it).show {
+                listItems(R.array.long_click_titles) { _: MaterialDialog, i: Int, _: CharSequence ->
+                    clickPosition(i)
+                }
+            }
+        }
+    }
+
+    private fun clickPosition(i: Int) {
+        when (i) {
+            0 -> {
+                start2Decode()
+            }
+            else -> {
+                // do nothing
+            }
+        }
+    }
+
+    private fun start2Decode(){
+        file.path?.let {
+            BarcodeDecoder.decode(it,object :BarcodeDecoder.DecodeCallback{
+                override fun onStartDecode() {
+                    // show loading dialog
+
+                }
+
+                override fun onDecodeResult(isBarcode: Boolean, resultText: String?) {
+                    if (TextUtils.isEmpty(resultText)){
+                        return
+                    }
+
+                    context?.let { ctx ->
+                        MaterialDialog(ctx)
+                            .show {
+                                title(R.string.title_recognize_result)
+                            }.message(text = resultText)
+                            .positiveButton(res = R.string.copy)
+                            .positiveButton(click = object : DialogCallback {
+                                override fun invoke(p1: MaterialDialog) {
+                                    copy(ctx, resultText)
+                                }
+                            })
+
+                    }
+                }
+
+            })
+        }
+    }
+
+    private fun copy(ctx: Context, content: String?) {
+        val cm =
+            ctx.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+
+        if (!TextUtils.isEmpty(content)) {
+            val data = ClipData.newPlainText(null, content)
+            cm.setPrimaryClip(data)
+            Toast.makeText(ctx, "Copied", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(ctx, "The content is empty", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
     private fun playVideo() {

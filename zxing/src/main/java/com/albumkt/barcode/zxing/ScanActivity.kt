@@ -53,21 +53,24 @@ class ScanActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_copy -> {
-                val cm = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val content = tvResult.text.toString()
-                if (!TextUtils.isEmpty(content)) {
-                    val data = ClipData.newPlainText(null, content)
-                    cm.setPrimaryClip(data)
-                    Toast.makeText(this, "Copied", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "No result yet", Toast.LENGTH_SHORT).show()
-                }
+                copy()
             }
             else -> {
                 //do nothing
             }
         }
+    }
 
+    private fun copy() {
+        val cm = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val content = tvResult.text.toString()
+        if (!TextUtils.isEmpty(content)) {
+            val data = ClipData.newPlainText(null, content)
+            cm.setPrimaryClip(data)
+            Toast.makeText(this, "Copied", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "The content is empty", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

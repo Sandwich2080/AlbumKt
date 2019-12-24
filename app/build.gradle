@@ -66,4 +66,6 @@ dependencies {
 
     //MediaPlayer
     implementation 'com.google.android.exoplayer:exoplayer:2.10.8'
+
+    implementation 'com.afollestad.material-dialogs:core:3.1.1'
 }
