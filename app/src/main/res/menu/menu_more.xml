@@ -24,7 +24,7 @@
         />
     <item
         android:id="@+id/action_qr_code_gen"
-        android:icon="@mipmap/menu_scan2"
+        android:icon="@mipmap/menu_gen_barcode"
         android:title="Generate QRCode"
         app:showAsAction="never"
         />
@@ -37,6 +37,12 @@
         android:id="@+id/action_feedback"
         android:icon="@mipmap/menu_feedback"
         android:title="Feedback"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/action_about"
+        android:icon="@mipmap/menu_about"
+        android:title="About"
         app:showAsAction="withText" />
 
 </menu>

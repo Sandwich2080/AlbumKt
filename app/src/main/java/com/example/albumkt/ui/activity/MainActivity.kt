@@ -117,6 +117,9 @@ class MainActivity : BaseActivity() {
             R.id.action_feedback -> {
                 startActivity(Intent(this, FeedbackActivity::class.java))
             }
+            R.id.action_about->{
+                startActivity(Intent(this,AboutActivity::class.java))
+            }
             else -> {
 
             }

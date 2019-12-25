@@ -21,6 +21,9 @@ class FragmentUtil {
                 FragmentIds.BARCODE_FEN -> {
                     BarcodeGenFragment()
                 }
+                FragmentIds.ABOUT->{
+                    AboutFragment()
+                }
                 else -> {
                     null
                 }
