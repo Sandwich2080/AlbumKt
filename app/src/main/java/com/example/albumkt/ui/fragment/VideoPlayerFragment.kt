@@ -11,6 +11,7 @@ import com.example.albumkt.base.BaseFragment
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
 import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource.Factory
 import com.google.android.exoplayer2.ui.PlayerView
@@ -34,6 +35,8 @@ class VideoPlayerFragment : BaseFragment() {
 
     private lateinit var playerView: PlayerView
 
+    private lateinit var player:SimpleExoPlayer
+
     override fun permissionsNeeded(): Array<String> {
         return arrayOf()
     }
@@ -43,7 +46,7 @@ class VideoPlayerFragment : BaseFragment() {
         val mediaFile = arguments?.getParcelable<MediaFile>(Constants.MEDIA_FILE)
 
         //1. init
-        val player = ExoPlayerFactory.newSimpleInstance(context)
+        player = ExoPlayerFactory.newSimpleInstance(context)
         playerView.player = player
 
         //2. prepare the player
@@ -79,6 +82,15 @@ class VideoPlayerFragment : BaseFragment() {
         val rootView = inflater.inflate(R.layout.fragment_video_player, container, false)
         playerView = rootView.findViewById(R.id.playerView)
         return rootView
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        player.stop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     companion object {
