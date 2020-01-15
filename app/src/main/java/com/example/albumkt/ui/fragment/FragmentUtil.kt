@@ -21,8 +21,11 @@ class FragmentUtil {
                 FragmentIds.BARCODE_FEN -> {
                     BarcodeGenFragment()
                 }
-                FragmentIds.ABOUT->{
+                FragmentIds.ABOUT -> {
                     AboutFragment()
+                }
+                FragmentIds.LANGUAGE_SELECT -> {
+                    LanguageSelectFragment()
                 }
                 else -> {
                     null

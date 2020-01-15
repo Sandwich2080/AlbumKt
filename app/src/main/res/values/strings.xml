@@ -5,8 +5,11 @@
     <string name="video_player">播放器</string>
     <string name="feedback">反馈</string>
     <string name="txt_player_switch">使用内置播放器（视频播放）</string>
+    <string name="txt_multi_language">多语言</string>
     <string name="hint_feedback">请填写您要反馈的问题</string>
     <string name="text_btn_submit">提交</string>
+    <string name="language_setting">设置语言</string>
+    <string name="night_mode">夜间模式</string>
 
     <array name="long_click_titles">
         <item>识别可能存在的条码或二维码</item>

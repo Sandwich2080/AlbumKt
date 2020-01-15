@@ -30,5 +30,7 @@ interface FragmentIds {
             get() = BASE + 4
         val ABOUT: Int
             get() = BASE + 5
+        val LANGUAGE_SELECT: Int
+            get() = BASE + 6
     }
 }

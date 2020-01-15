@@ -1,15 +1,16 @@
 package com.example.albumkt.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.SwitchCompat
-
+import androidx.fragment.app.Fragment
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
+import com.example.albumkt.ui.activity.LanguageSelectActivity
 import com.example.albumkt.util.SettingsConfig
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,10 +22,13 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SettingFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SettingFragment : BaseFragment() {
+class SettingFragment : BaseFragment(), View.OnClickListener {
     private var param1: String? = null
     private var param2: String? = null
+
     private lateinit var internalPlayerSwitch: SwitchCompat
+    private lateinit var tvMultiLan: AppCompatTextView
+
 
     override fun permissionsNeeded(): Array<String> {
         return arrayOf()
@@ -52,6 +56,9 @@ class SettingFragment : BaseFragment() {
         internalPlayerSwitch.setOnCheckedChangeListener { _, isChecked ->
             SettingsConfig.ins.setInternalPlayer(isChecked)
         }
+
+        tvMultiLan = rootView.findViewById(R.id.tv_multi_lan)
+        tvMultiLan.setOnClickListener(this)
         return rootView
     }
 
@@ -72,5 +79,15 @@ class SettingFragment : BaseFragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.tv_multi_lan -> {
+                activity?.startActivity(Intent(activity, LanguageSelectActivity::class.java))
+            }
+            else -> {
+            }
+        }
     }
 }

@@ -13,8 +13,23 @@
         android:layout_height="56dp"
         android:padding="15dp"
         android:text="@string/txt_player_switch"
-        android:textColor="@android:color/darker_gray"
-        />
+        android:textColor="@android:color/darker_gray" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_multi_lan"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:drawableRight="@mipmap/ic_arrow_right"
+        android:padding="15dp"
+        android:text="@string/txt_multi_language"
+        android:textColor="@android:color/darker_gray" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/night_mode_switch"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:padding="15dp"
+        android:text="@string/night_mode"
+        android:textColor="@android:color/darker_gray" />
 
 </LinearLayout>
