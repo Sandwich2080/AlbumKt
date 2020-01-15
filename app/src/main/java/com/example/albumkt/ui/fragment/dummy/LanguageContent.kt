@@ -8,33 +8,33 @@ import java.util.*
  *
  * TODO: Replace all uses of this class before publishing your app.
  */
-object DummyContent {
+object LanguageContent {
 
     /**
      * An array of sample (dummy) items.
      */
-    val ITEMS: MutableList<DummyItem> = ArrayList()
+    val ITEMS: MutableList<LanguageItem> = ArrayList()
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    val ITEM_MAP: MutableMap<String, DummyItem> = HashMap()
+    val ITEM_MAP: MutableMap<String, LanguageItem> = HashMap()
 
     private val COUNT = 3
 
     init {
         // Add some sample items.
         for (i in 0 until COUNT) {
-            addItem(createDummyItem(i))
+            addItem(createLanguageItem(i))
         }
     }
 
-    private fun addItem(item: DummyItem) {
+    private fun addItem(item: LanguageItem) {
         ITEMS.add(item)
         ITEM_MAP.put(item.id, item)
     }
 
-    private fun createDummyItem(position: Int): DummyItem {
+    private fun createLanguageItem(position: Int): LanguageItem {
 
         val content = when (position) {
             0 -> {
@@ -51,7 +51,7 @@ object DummyContent {
             }
         }
 
-        return DummyItem(position.toString(), content, makeDetails(position))
+        return LanguageItem(position.toString(), content, makeDetails(position))
     }
 
     private fun makeDetails(position: Int): String {
@@ -74,7 +74,7 @@ object DummyContent {
     /**
      * A dummy item representing a piece of content.
      */
-    data class DummyItem(val id: String, val content: String, val details: String) {
+    data class LanguageItem(val id: String, val content: String, val details: String) {
         override fun toString(): String = content
     }
 }

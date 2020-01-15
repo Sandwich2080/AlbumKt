@@ -2,18 +2,20 @@ package com.example.albumkt.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
 
-import com.example.albumkt.ui.fragment.dummy.DummyContent
-import com.example.albumkt.ui.fragment.dummy.DummyContent.DummyItem
+import com.example.albumkt.ui.fragment.dummy.LanguageContent
+import com.example.albumkt.ui.fragment.dummy.LanguageContent.LanguageItem
+import com.example.albumkt.util.MultiLanguageUtils
+import com.example.albumkt.util.SettingsConfig
 
 /**
  * A fragment representing a list of Items.
@@ -49,18 +51,23 @@ class LanguageSelectFragment : BaseFragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
                 listener = object : OnListFragmentInteractionListener {
-                    override fun onListFragmentInteraction(item: DummyItem?) {
+                    override fun onListFragmentInteraction(item: LanguageItem?) {
                         onListItemClick(item)
                     }
                 }
-                adapter = LanguageItemRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = LanguageItemRecyclerViewAdapter(LanguageContent.ITEMS, listener)
             }
         }
         return view
     }
 
-    private fun onListItemClick(item: DummyItem?) {
-
+    private fun onListItemClick(item: LanguageItem?) {
+        //MultiLanguageUtils.changeAppLanguage(item)
+        if (item == null) {
+            return
+        }
+        SettingsConfig.ins.setLanguage(item.id.toInt())
+        Toast.makeText(context, R.string.no_recognized_result, Toast.LENGTH_SHORT).show()
     }
 
     override fun permissionsNeeded(): Array<String> {
@@ -96,7 +103,7 @@ class LanguageSelectFragment : BaseFragment() {
      * for more information.
      */
     interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(item: LanguageItem?)
     }
 
     companion object {

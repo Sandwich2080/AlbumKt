@@ -8,6 +8,7 @@ class SettingsConfig private constructor() {
     companion object {
         private val SETTING_CONFIG_SHARE = "setting_config_share"
         private val INTERNAL_PLAYER = "internal_player"
+        private val LANGUAGE = "language"
 
         val ins = SettingsConfig()
     }
@@ -27,5 +28,15 @@ class SettingsConfig private constructor() {
 
     fun isInternalPlayer(): Boolean {
         return settingSharePref.getBoolean(INTERNAL_PLAYER, true)
+    }
+
+    fun getLanguageId(): Int {
+        return settingSharePref.getInt(LANGUAGE, -1)
+    }
+
+    fun setLanguage(languageId: Int) {
+        settingSharePref.edit().apply {
+            putInt(LANGUAGE, languageId)
+        }.apply()
     }
 }
