@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">相冊</string>
+    <string name="preview_title">預覽</string>
+    <string name="setting">設置</string>
+    <string name="video_player">播放器</string>
+    <string name="feedback">反饋</string>
+    <string name="txt_player_switch">使用內置視頻播放器</string>
+    <string name="txt_multi_language">多語言</string>
+    <string name="hint_feedback">請填寫您要反饋的問題</string>
+    <string name="text_btn_submit">提交</string>
+    <string name="language_setting">設置語言</string>
+    <string name="night_mode">夜間模式</string>
+
+    <array name="long_click_titles">
+        <item>識別可能存在的條碼或二維碼</item>
+    </array>
+    <string name="title_recognize_result">識別結果</string>
+    <string name="copy">複製</string>
+    <string name="hint_content2gen">請填寫要生成的內容</string>
+    <string name="generate">點擊生成</string>
+    <string name="barcode_generator">條碼（QRCode）生成器</string>
+    <string name="save2phone">保存到手機</string>
+    <string name="no_recognized_result">未識別到條碼或二維碼</string>
+
+    <string name="about">關於</string>
+    <string name="version">版本號：V%s</string>
+
+    <string name="pictures">圖片</string>
+    <string name="videos">視頻</string>
+    <string name="all_files">所有文件</string>
+
+    <string name="edit">編輯</string>
+    <string name="scan_with_zxing">掃碼（Zxing）</string>
+    <string name="scan_with_firebase">掃碼（Firebase）</string>
+    <string name="generate_qrcode">二維碼生成</string>
+</resources>

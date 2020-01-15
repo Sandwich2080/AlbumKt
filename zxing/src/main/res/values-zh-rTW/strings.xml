@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scanning_result">掃描結果</string>
+    <string name="no_result_hint">識別內容為空</string>
+    <string name="copy_content">複製內容</string>
+</resources>

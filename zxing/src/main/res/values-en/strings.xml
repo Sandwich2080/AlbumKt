@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="scanning_result">Scanning Result</string>
+    <string name="no_result_hint">No result yet</string>
+    <string name="copy_content">Copy the content</string>
+
+</resources>

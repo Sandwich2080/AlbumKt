@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Album</string>
+    <string name="preview_title">Preview</string>
+    <string name="setting">Setting</string>
+    <string name="video_player">Video player</string>
+    <string name="feedback">Feedback</string>
+    <string name="txt_player_switch">Using Internal Video Player</string>
+    <string name="txt_multi_language">Language</string>
+    <string name="hint_feedback">Input the issue</string>
+    <string name="text_btn_submit">Submit</string>
+    <string name="language_setting">Language</string>
+    <string name="night_mode">Night Mode</string>
+
+    <array name="long_click_titles">
+        <item>Recognize barcode or QRCode</item>
+    </array>
+    <string name="title_recognize_result">Recognizing Result</string>
+    <string name="copy">Copy</string>
+    <string name="hint_content2gen">Input the content you want to generate</string>
+    <string name="generate">Click to Generate</string>
+    <string name="barcode_generator">QRCode(Barcode) Generator</string>
+    <string name="save2phone">Save to Phone</string>
+    <string name="no_recognized_result">No Any barcode or QRCode</string>
+
+    <string name="about">About</string>
+    <string name="version">Version：V%s</string>
+
+    <string name="pictures">Photos</string>
+    <string name="videos">Videos</string>
+    <string name="all_files">All</string>
+
+    <string name="edit">Edit</string>
+    <string name="scan_with_zxing">Scan(Zxing)</string>
+    <string name="scan_with_firebase">Scan(Firebase)</string>
+    <string name="generate_qrcode">QRCode Generator</string>
+
+</resources>

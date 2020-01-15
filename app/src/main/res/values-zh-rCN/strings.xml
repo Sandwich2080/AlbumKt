@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">相册</string>
     <string name="preview_title">预览</string>
     <string name="setting">设置</string>
     <string name="video_player">播放器</string>
     <string name="feedback">反馈</string>
-    <string name="txt_player_switch">使用内置播放器（视频播放）</string>
+    <string name="txt_player_switch">使用内置视频播放器</string>
     <string name="txt_multi_language">多语言</string>
     <string name="hint_feedback">请填写您要反馈的问题</string>
     <string name="text_btn_submit">提交</string>
@@ -24,6 +25,7 @@
 
     <string name="about">关于</string>
     <string name="version">版本号：V%s</string>
+
     <string name="pictures">图片</string>
     <string name="videos">视频</string>
     <string name="all_files">所有文件</string>
@@ -32,4 +34,5 @@
     <string name="scan_with_zxing">扫码（Zxing）</string>
     <string name="scan_with_firebase">扫码（Firebase）</string>
     <string name="generate_qrcode">二维码生成</string>
+
 </resources>
