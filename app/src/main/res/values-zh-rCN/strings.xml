@@ -35,4 +35,6 @@
     <string name="scan_with_firebase">扫码（Firebase）</string>
     <string name="generate_qrcode">二维码生成</string>
 
+    <string name="app_restarting">应用重启中…</string>
+
 </resources>

@@ -35,4 +35,6 @@
     <string name="scan_with_firebase">Scan(Firebase)</string>
     <string name="generate_qrcode">QRCode Generator</string>
 
+    <string name="app_restarting">App restarting…</string>
+
 </resources>

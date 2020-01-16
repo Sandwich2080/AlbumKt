@@ -89,10 +89,6 @@ class VideoPlayerFragment : BaseFragment() {
         player.stop()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     companion object {
         /**
          * Use this factory method to create a new instance of

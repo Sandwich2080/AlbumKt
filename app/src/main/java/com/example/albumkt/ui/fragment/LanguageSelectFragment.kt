@@ -14,6 +14,7 @@ import com.example.albumkt.base.BaseFragment
 
 import com.example.albumkt.ui.fragment.dummy.LanguageContent
 import com.example.albumkt.ui.fragment.dummy.LanguageContent.LanguageItem
+import com.example.albumkt.util.AppUtils
 import com.example.albumkt.util.MultiLanguageUtils
 import com.example.albumkt.util.SettingsConfig
 
@@ -62,12 +63,12 @@ class LanguageSelectFragment : BaseFragment() {
     }
 
     private fun onListItemClick(item: LanguageItem?) {
-        //MultiLanguageUtils.changeAppLanguage(item)
         if (item == null) {
             return
         }
         SettingsConfig.ins.setLanguage(item.id.toInt())
-        Toast.makeText(context, R.string.no_recognized_result, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, R.string.app_restarting, Toast.LENGTH_SHORT).show()
+        AppUtils.restart()
     }
 
     override fun permissionsNeeded(): Array<String> {
@@ -75,15 +76,6 @@ class LanguageSelectFragment : BaseFragment() {
     }
 
     override fun init() {
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        /*if (context is OnListFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }*/
     }
 
     override fun onDetach() {

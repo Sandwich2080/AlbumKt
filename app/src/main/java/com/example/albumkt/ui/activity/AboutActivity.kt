@@ -6,10 +6,6 @@ import com.example.albumkt.util.FragmentIds
 
 class AboutActivity : CommonActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun fragmentArgs(): Bundle? {
         return null
     }

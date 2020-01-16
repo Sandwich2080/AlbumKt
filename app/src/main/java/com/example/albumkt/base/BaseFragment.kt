@@ -1,5 +1,6 @@
 package com.example.albumkt.base
 
+import android.app.ProgressDialog
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -7,9 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import pub.devrel.easypermissions.EasyPermissions
 
-abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks,EasyPermissions.RationaleCallbacks {
+abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks,
+    EasyPermissions.RationaleCallbacks {
 
-    companion object{
+    companion object {
         const val PERMISSION_REQUEST_CODE = 0xff
     }
 
@@ -42,7 +44,12 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks,Ea
         if (permissions.isEmpty() || EasyPermissions.hasPermissions(context!!, *permissions)) {
             init()
         } else {
-            EasyPermissions.requestPermissions(this, "Permission Request", PERMISSION_REQUEST_CODE, *permissions)
+            EasyPermissions.requestPermissions(
+                this,
+                "Permission Request",
+                PERMISSION_REQUEST_CODE,
+                *permissions
+            )
         }
     }
 
@@ -67,6 +74,24 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks,Ea
     override fun onRationaleAccepted(requestCode: Int) {
         init()
     }
+
+    private lateinit var progressDialog: ProgressDialog
+    private fun isProgressDialogInitialized() =::progressDialog.isInitialized
+
+    protected fun showProgressDialog(resId: Int) {
+        if (!isProgressDialogInitialized()){
+            progressDialog = ProgressDialog(activity)
+        }
+        progressDialog.setMessage(getString(resId))
+        progressDialog.show()
+    }
+
+    protected fun dismissDialog() {
+        if (isProgressDialogInitialized()){
+            progressDialog.dismiss()
+        }
+    }
+
 }
 
 

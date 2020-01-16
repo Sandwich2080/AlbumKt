@@ -15,7 +15,7 @@ class AlbumApp : Application() {
     override fun onCreate() {
         super.onCreate()
         ins = this
-        registerActivityLifecycleCallbacks(object: ActivityLifecycleCallbacks{
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity) {
             }
 
@@ -32,11 +32,18 @@ class AlbumApp : Application() {
             }
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                val id = SettingsConfig.ins.getLanguageId()
+                MultiLanguageUtils.changeAppLanguage(
+                    LanguageContent.LanguageItem(
+                        id.toString(),
+                        "",
+                        ""
+                    )
+                )
             }
 
             override fun onActivityResumed(activity: Activity) {
-                val id = SettingsConfig.ins.getLanguageId()
-                MultiLanguageUtils.changeAppLanguage(LanguageContent.LanguageItem(id.toString(),"",""))
+
             }
 
         })

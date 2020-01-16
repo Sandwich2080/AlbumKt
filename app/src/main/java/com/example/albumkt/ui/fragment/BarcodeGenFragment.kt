@@ -57,10 +57,6 @@ class BarcodeGenFragment : BaseFragment(), View.OnClickListener {
         return rootView
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onClick(v: View?) {
         if (v == null) {
             return

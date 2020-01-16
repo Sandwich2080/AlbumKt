@@ -34,4 +34,6 @@
     <string name="scan_with_zxing">掃碼（Zxing）</string>
     <string name="scan_with_firebase">掃碼（Firebase）</string>
     <string name="generate_qrcode">二維碼生成</string>
+
+    <string name="app_restarting">應用重啟中…</string>
 </resources>
