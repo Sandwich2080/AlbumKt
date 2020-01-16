@@ -24,7 +24,26 @@ class MultiLanguageUtils private constructor() {
 
         @JvmStatic
         private fun setLanguage(item: LanguageContent.LanguageItem, configuration: Configuration) {
-            val locale = when (item.id.toInt()) {
+            val idInt = item.id.toInt()
+            val locale = getLocale(idInt)
+
+            Locale.setDefault(locale)
+            LogUtils.debug("setLanguage->locale:$locale")
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                configuration.setLocale(locale)
+                configuration.setLocales(LocaleList(locale))
+                AlbumApp.ins.createConfigurationContext(configuration)
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                configuration.setLocale(locale)
+            } else {
+                configuration.locale = locale
+            }
+
+        }
+
+        private fun getLocale(idInt: Int): Locale {
+            return when (idInt) {
                 0 -> {
                     Locale.SIMPLIFIED_CHINESE
                     //Locale("zh","ZH")
@@ -42,22 +61,6 @@ class MultiLanguageUtils private constructor() {
                     //Locale("zh","ZH")
                 }
             }
-
-            Locale.setDefault(locale)
-
-            LogUtils.debug("setLanguage->locale:$locale")
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                configuration.setLocale(locale)
-                configuration.setLocales(LocaleList(locale))
-                AlbumApp.ins.createConfigurationContext(configuration)
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                configuration.setLocale(locale)
-            } else {
-                configuration.locale = locale
-            }
-
         }
-
     }
 }
