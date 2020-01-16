@@ -29,6 +29,8 @@ class AppUtils private constructor() {
             val alarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 100, pendingIntent)
 
+            // finish all the activity.
+            ActivityStack.ins.popAll()
             // Kill current process
             Process.killProcess(Process.myPid())
         }

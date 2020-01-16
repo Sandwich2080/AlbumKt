@@ -4,6 +4,8 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import com.example.albumkt.ui.fragment.dummy.LanguageContent
+import com.example.albumkt.util.ActivityStack
+import com.example.albumkt.util.LogUtils
 import com.example.albumkt.util.MultiLanguageUtils
 import com.example.albumkt.util.SettingsConfig
 
@@ -32,7 +34,10 @@ class AlbumApp : Application() {
             }
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                ActivityStack.ins.push(activity)
+                LogUtils.debug("$activity created.")
                 val id = SettingsConfig.ins.getLanguageId()
+                LogUtils.debug("languageId:$id")
                 MultiLanguageUtils.changeAppLanguage(
                     LanguageContent.LanguageItem(
                         id.toString(),

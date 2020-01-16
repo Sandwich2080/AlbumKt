@@ -27,17 +27,25 @@ class MultiLanguageUtils private constructor() {
             val locale = when (item.id.toInt()) {
                 0 -> {
                     Locale.SIMPLIFIED_CHINESE
+                    //Locale("zh","ZH")
                 }
                 1 -> {
                     Locale.TRADITIONAL_CHINESE
+                    //Locale("zh","TW")
                 }
                 2 -> {
                     Locale.ENGLISH
+                    //Locale("en","US")
                 }
                 else -> {
                     Locale.getDefault()
+                    //Locale("zh","ZH")
                 }
             }
+
+            Locale.setDefault(locale)
+
+            LogUtils.debug("setLanguage->locale:$locale")
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 configuration.setLocale(locale)

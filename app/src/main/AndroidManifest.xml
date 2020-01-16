@@ -12,21 +12,41 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.LanguageSelectActivity"/>
-        <activity android:name=".ui.activity.AboutActivity" />
-        <activity android:name=".ui.activity.BarcodeGenActivity" />
-        <activity android:name=".ui.activity.CommonActivity" />
-        <activity android:name=".ui.activity.VideoPlayActivity" />
-        <activity android:name=".ui.activity.FeedbackActivity" />
-        <activity android:name=".ui.activity.SettingActivity" />
+        <activity
+            android:name=".ui.activity.LanguageSelectActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name=".ui.activity.BarcodeGenActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name=".ui.activity.CommonActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name=".ui.activity.VideoPlayActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name=".ui.activity.FeedbackActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name=".ui.activity.SettingActivity"
+            android:configChanges="locale|orientation" />
         <!--
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="barcode" />
         -->
-        <activity android:name=".ui.activity.PreviewActivity" />
-        <activity android:name=".base.BaseActivity" />
-        <activity android:name=".ui.activity.MainActivity">
+        <activity
+            android:name=".ui.activity.PreviewActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name=".base.BaseActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:configChanges="locale|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,9 +63,15 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider> <!-- barcode start -->
-        <activity android:name="com.google.firebase.samples.apps.mlkit.EntryChoiceActivity" />
-        <activity android:name="com.google.firebase.samples.apps.mlkit.java.ChooserActivity" />
-        <activity android:name="com.google.firebase.samples.apps.mlkit.kotlin.ChooserActivity" />
+        <activity
+            android:name="com.google.firebase.samples.apps.mlkit.EntryChoiceActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name="com.google.firebase.samples.apps.mlkit.java.ChooserActivity"
+            android:configChanges="locale|orientation" />
+        <activity
+            android:name="com.google.firebase.samples.apps.mlkit.kotlin.ChooserActivity"
+            android:configChanges="locale|orientation" />
     </application>
 
 </manifest>
