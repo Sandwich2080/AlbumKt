@@ -1,8 +1,10 @@
 package com.example.albumkt.util
 
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Build
 import android.os.LocaleList
+import androidx.annotation.RequiresApi
 import com.example.albumkt.AlbumApp
 import com.example.albumkt.ui.fragment.dummy.LanguageContent
 import java.util.*
@@ -62,5 +64,33 @@ class MultiLanguageUtils private constructor() {
                 }
             }
         }
+
+        @JvmStatic
+        fun attachBaseContext(context: Context?): Context? {
+            if (context == null) {
+                return context
+            }
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                updateResources(context)
+            } else {
+                context
+            }
+        }
+
+        @RequiresApi(Build.VERSION_CODES.N)
+        @JvmStatic
+        private fun updateResources(context: Context?): Context? {
+            if (context == null) {
+                return context
+            }
+
+            val resources = context.resources
+            val locale = getLocale(SettingsConfig.ins.getLanguageId())
+            val configuration = resources.configuration
+            configuration.setLocale(locale)
+            configuration.setLocales(LocaleList(locale))
+            return context.createConfigurationContext(configuration)
+        }
+
     }
 }

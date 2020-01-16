@@ -1,9 +1,11 @@
 package com.example.albumkt.base
 
+import android.content.Context
 import android.os.Build
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.albumkt.util.MultiLanguageUtils
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -30,5 +32,9 @@ open class BaseActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(MultiLanguageUtils.attachBaseContext(newBase))
     }
 }
