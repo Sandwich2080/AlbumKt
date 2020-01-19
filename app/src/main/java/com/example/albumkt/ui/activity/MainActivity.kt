@@ -8,7 +8,7 @@ import android.widget.FrameLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import butterknife.BindView
+//import butterknife.BindView
 import com.albumkt.barcode.zxing.ScanActivity
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseActivity
@@ -23,9 +23,9 @@ import com.google.firebase.samples.apps.mlkit.EntryChoiceActivity
 class MainActivity : BaseActivity() {
 
 
-    @BindView(R.id.container)
+    //@BindView(R.id.container)
     lateinit var container: FrameLayout
-    @BindView(R.id.tl_bottom)
+    //@BindView(R.id.tl_bottom)
     lateinit var tlBottom: TabLayout
 
     private lateinit var imageFragment: ImageFragment
