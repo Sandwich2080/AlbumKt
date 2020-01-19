@@ -36,4 +36,8 @@
     <string name="generate_qrcode">二維碼生成</string>
 
     <string name="app_restarting">應用重啟中…</string>
+
+    <string name="copied">已復制</string>
+    <string name="copy_content_empty">內容為空</string>
+
 </resources>

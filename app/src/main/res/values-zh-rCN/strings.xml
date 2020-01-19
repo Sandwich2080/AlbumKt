@@ -37,4 +37,7 @@
 
     <string name="app_restarting">应用重启中…</string>
 
+    <string name="copied">已复制</string>
+    <string name="copy_content_empty">内容为空</string>
+
 </resources>

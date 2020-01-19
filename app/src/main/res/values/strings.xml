@@ -37,4 +37,7 @@
 
     <string name="app_restarting">App restarting…</string>
 
+    <string name="copied">Copied</string>
+    <string name="copy_content_empty">The content is empty</string>
+
 </resources>

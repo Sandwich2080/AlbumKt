@@ -160,9 +160,9 @@ class PreviewFragment : BaseFragment() {
         if (!TextUtils.isEmpty(content)) {
             val data = ClipData.newPlainText(null, content)
             cm.setPrimaryClip(data)
-            Toast.makeText(ctx, "Copied", Toast.LENGTH_SHORT).show()
+            Toast.makeText(ctx, R.string.copied, Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(ctx, "The content is empty", Toast.LENGTH_SHORT)
+            Toast.makeText(ctx, R.string.copy_content_empty, Toast.LENGTH_SHORT)
                 .show()
         }
     }
