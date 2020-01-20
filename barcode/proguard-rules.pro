@@ -20,7 +20,17 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+
+-dontwarn com.android.tools.lint.detector.api.**
+-keep interface com.android.tools.lint.detector.api.**
+-keep interface com.android.tools.lint.detector.api.*
 -keep class com.android.tools.lint.detector.api.*
 -keep class com.android.tools.lint.detector.api.**
 -keep class com.android.tools.lint.detector.api.*{*;}
 -keep class com.android.tools.lint.detector.api.**{*;}
+
+-dontwarn com.firebase.lint.**
+-keep class com.firebase.lint.*
+-keep class com.firebase.lint.**
+-keep interface com.firebase.lint.*
+-keep interface com.firebase.lint.**
