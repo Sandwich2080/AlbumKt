@@ -26,7 +26,7 @@ Scan the QRCode  below to install the release apk file.
 ![扫码下载](app/release/QRCode_app_release.png)
 
 # FQA
-## 1. You may face the following problem
+## 1. You may face the following problem when building a release apk
    <code>
    Execution failed for task ':app:processReleaseGoogleServices'.
    > File google-services.json is missing. The Google Services Plugin cannot function without it. 
