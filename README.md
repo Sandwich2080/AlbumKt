@@ -23,7 +23,7 @@ Scan the QRCode  below to install the release apk file.
 
 （Use browsers that support QRCode scanning）
 
-![扫码下载](https://github.com/Sandwich2080/AlbumKt/releases)
+![扫码下载](app/release/QRCode_app_release.png)
 
 # FQA
 ## 1. You may face the following problem when building a release apk
