@@ -25,3 +25,12 @@ Scan the QRCode  below to install the release apk file.
 
 ![扫码下载](app/release/QRCode_app_release.png)
 
+# FQA
+## 1. You may face the following problem
+   <code>
+   Execution failed for task ':app:processReleaseGoogleServices'.
+   > File google-services.json is missing. The Google Services Plugin cannot function without it. 
+      Searched Location: 
+   </code>
+   The solution lies here: 
+   https://stackoverflow.com/questions/33866061/error-file-google-services-json-is-missing-from-module-root-folder-the-google
