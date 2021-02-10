@@ -13,9 +13,11 @@ import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
+import com.example.albumkt.common.PreviewData
 import com.example.albumkt.ui.activity.PreviewActivity
 import com.example.albumkt.ui.adapter.FileAdapter
 import com.example.albumkt.util.Constants
+import com.example.albumkt.util.LogUtils
 import com.example.albumkt.util.MediaFile
 import com.example.albumkt.util.MediaLoader
 
@@ -35,6 +37,7 @@ private const val ARG_PARAM2 = "param2"
 open class ImageFragment : BaseFragment() {
 
     private val TAG: String = ImageFragment::class.java.simpleName
+
     // Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -75,11 +78,19 @@ open class ImageFragment : BaseFragment() {
     }
 
     private fun onItemClick(position: Int) {
-        val it = Intent()
-        it.putParcelableArrayListExtra(Constants.FILE_LIST, fileAdapter.fileList)
-        it.putExtra(Constants.CLICK_POSITION, position)
-        activity?.let { act -> it.setClass(act, PreviewActivity::class.java) }
-        activity?.startActivity(it)
+        try {
+            val it = Intent(activity as Context,PreviewActivity::class.java).apply {
+                // If passing a big list with Intent, this may cause memory issue. Then the app may crash. For detail, see the following link
+                // https://stackoverflow.com/questions/57848280/handlewindowvisibility-no-activity-for-token-android-os-binderproxy
+                //putParcelableArrayListExtra(Constants.FILE_LIST, fileAdapter.fileList)
+                PreviewData.fileList = fileAdapter.fileList
+                putExtra(Constants.CLICK_POSITION, position)
+            }
+            LogUtils.debug("click to preview: position->$position,$activity")
+            activity?.startActivity(it)
+        } catch (e: Throwable) {
+            e.printStackTrace()
+        }
     }
 
     private fun loadData() {

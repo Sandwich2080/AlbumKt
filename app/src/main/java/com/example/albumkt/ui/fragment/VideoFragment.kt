@@ -12,6 +12,7 @@ import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
+import com.example.albumkt.common.PreviewData
 import com.example.albumkt.ui.activity.PreviewActivity
 import com.example.albumkt.ui.adapter.FileAdapter
 import com.example.albumkt.util.Constants
@@ -51,7 +52,8 @@ class VideoFragment : BaseFragment() {
 
     private fun onItemClick(position: Int) {
         val it = Intent()
-        it.putParcelableArrayListExtra(Constants.FILE_LIST, fileAdapter.fileList)
+        //it.putParcelableArrayListExtra(Constants.FILE_LIST, fileAdapter.fileList)
+        PreviewData.fileList = fileAdapter.fileList
         it.putExtra(Constants.CLICK_POSITION, position)
         activity?.let { act -> it.setClass(act, PreviewActivity::class.java) }
         activity?.startActivity(it)

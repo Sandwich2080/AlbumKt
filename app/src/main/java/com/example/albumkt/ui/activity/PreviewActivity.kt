@@ -1,15 +1,17 @@
 package com.example.albumkt.ui.activity
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.widget.TextViewCompat
 import androidx.viewpager.widget.ViewPager
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseActivity
+import com.example.albumkt.common.PreviewData
 import com.example.albumkt.ui.adapter.PreviewAdapter
 import com.example.albumkt.util.Constants
+import com.example.albumkt.util.LogUtils
 import com.example.albumkt.util.MediaFile
 
 class PreviewActivity : BaseActivity() {
@@ -18,18 +20,28 @@ class PreviewActivity : BaseActivity() {
 
     private lateinit var previewAdapter: PreviewAdapter
 
+    init {
+      LogUtils.debug("$this init")
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        LogUtils.debug("$this 1")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        LogUtils.debug("$this 2")
         setContentView(R.layout.activity_preview)
         viewPager = findViewById(R.id.view_pager)
         setTitle(R.string.preview_title)
 
         val clickPos = intent.getIntExtra(Constants.CLICK_POSITION, 0)
-        val fileList: ArrayList<MediaFile> = intent.getParcelableArrayListExtra(Constants.FILE_LIST)
+        val fileList: ArrayList<MediaFile>? = PreviewData.fileList//intent.getParcelableArrayListExtra(Constants.FILE_LIST)
 
         previewAdapter = PreviewAdapter(
             supportFragmentManager,
-            fileList
+            fileList!!
         )
         viewPager.adapter = previewAdapter
 

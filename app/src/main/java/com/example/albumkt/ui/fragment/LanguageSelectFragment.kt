@@ -1,21 +1,18 @@
 package com.example.albumkt.ui.fragment
 
-import android.content.Context
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
-
 import com.example.albumkt.ui.fragment.dummy.LanguageContent
 import com.example.albumkt.ui.fragment.dummy.LanguageContent.LanguageItem
 import com.example.albumkt.util.AppUtils
-import com.example.albumkt.util.MultiLanguageUtils
 import com.example.albumkt.util.SettingsConfig
 
 /**

@@ -49,7 +49,7 @@ class FileAdapter(var act: Activity, var fileList: ArrayList<MediaFile>) : BaseA
         }
 
         Glide.with(act).load(fileList[position].path).centerCrop()
-            .diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(true)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC).skipMemoryCache(true)
             .into(viewHolder.imageView)
 
         return retView

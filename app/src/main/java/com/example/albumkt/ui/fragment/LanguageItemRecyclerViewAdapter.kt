@@ -1,16 +1,14 @@
 package com.example.albumkt.ui.fragment
 
-import androidx.recyclerview.widget.RecyclerView
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.albumkt.R
-
-
 import com.example.albumkt.ui.fragment.LanguageSelectFragment.OnListFragmentInteractionListener
 import com.example.albumkt.ui.fragment.dummy.LanguageContent.LanguageItem
-
 import kotlinx.android.synthetic.main.fragment_language_select.view.*
 
 /**
