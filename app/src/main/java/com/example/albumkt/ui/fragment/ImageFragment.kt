@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.GridView
 import androidx.fragment.app.Fragment
 import com.example.albumkt.R
@@ -74,6 +75,18 @@ open class ImageFragment : BaseFragment() {
         gridView.setOnItemClickListener { _, _, position, _ ->
             onItemClick(position)
         }
+
+        val gridViewParent = gridView.rootView
+        gridViewParent.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener{
+            override fun onGlobalLayout() {
+                gridViewParent.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val with = gridViewParent.measuredWidth
+                val height = gridViewParent.measuredHeight
+                LogUtils.debug("parent:width->$with,height->$height")
+            }
+
+        })
+
         return gridView
     }
 
