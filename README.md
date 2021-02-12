@@ -34,3 +34,7 @@ Scan the QRCode  below to install the release apk file.
    </code>
    The solution lies here: 
    https://stackoverflow.com/questions/33866061/error-file-google-services-json-is-missing-from-module-root-folder-the-google
+   
+# Issues to solve
+## 1. GridView Scaling: https://medium.com/@ankurcse/android-gridview-scaling-7424eed81f29
+## 2. 'kotlin-android-extensions' deprecated: https://developer.android.com/topic/libraries/view-binding/migration
