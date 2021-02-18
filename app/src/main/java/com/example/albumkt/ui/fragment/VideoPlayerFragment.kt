@@ -10,7 +10,7 @@ import com.example.albumkt.R
 import com.example.albumkt.base.BaseFragment
 import com.example.albumkt.util.Constants
 import com.example.albumkt.util.MediaFile
-import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource.Factory
@@ -46,24 +46,25 @@ class VideoPlayerFragment : BaseFragment() {
         val mediaFile = arguments?.getParcelable<MediaFile>(Constants.MEDIA_FILE)
 
         //1. init
-        player = ExoPlayerFactory.newSimpleInstance(context)
+        //player = ExoPlayerFactory.newSimpleInstance(context)
+        player = SimpleExoPlayer.Builder(requireContext()).build()
         playerView.player = player
 
         //2. prepare the player
         // Produces DataSource instances through which media data is loaded.
-        // Produces DataSource instances through which media data is loaded.
         val dataSourceFactory = DefaultDataSourceFactory(
-            context,
-            Util.getUserAgent(context, context?.applicationInfo?.name)
+            requireContext(),
+            Util.getUserAgent(requireContext(), requireContext()?.applicationInfo?.name!!)
         )
 
         // This is the MediaSource representing the media to be played.
-        // This is the MediaSource representing the media to be played.
         val videoSource: MediaSource = Factory(dataSourceFactory)
-            .createMediaSource(Uri.fromFile(File(mediaFile?.path)))
+            //.createMediaSource(Uri.fromFile(File(mediaFile?.path)))
+            .createMediaSource(MediaItem.fromUri(Uri.fromFile(File(mediaFile?.path))))
         // Prepare the player with the source.
-        // Prepare the player with the source.
-        player.prepare(videoSource)
+        //player.prepare(videoSource)
+        player.setMediaSource(videoSource)
+        player.prepare()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
