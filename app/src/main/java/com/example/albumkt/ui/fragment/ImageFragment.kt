@@ -36,9 +36,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 open class ImageFragment : BaseFragment() {
-
-    private val TAG: String = ImageFragment::class.java.simpleName
-
     // Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -152,6 +149,8 @@ open class ImageFragment : BaseFragment() {
     }
 
     companion object {
+
+        private val TAG: String = ImageFragment::class.java.simpleName
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.

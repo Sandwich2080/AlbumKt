@@ -1,6 +1,7 @@
 package com.example.albumkt.ui.adapter
 
 import android.app.Activity
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.albumkt.R
+import com.example.albumkt.util.LogUtils
 import com.example.albumkt.util.MediaFile
 
 class FileAdapter(var act: Activity, var fileList: ArrayList<MediaFile>) : BaseAdapter() {
@@ -19,6 +21,16 @@ class FileAdapter(var act: Activity, var fileList: ArrayList<MediaFile>) : BaseA
     }
 
     private var inflater: LayoutInflater = LayoutInflater.from(this.act)
+
+    /**
+     * Width of items in the GridViews
+     */
+    private val itemWidth = displayMetrics().widthPixels/4
+
+    private fun displayMetrics():DisplayMetrics {
+        LogUtils.debug("Getting DisplayMetrics")
+        return this.act.resources.displayMetrics
+    }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
@@ -37,6 +49,18 @@ class FileAdapter(var act: Activity, var fileList: ArrayList<MediaFile>) : BaseA
         } else {
             retView = convertView
             viewHolder = retView.tag as ViewHolder
+        }
+
+        try {
+            //val params = retView.layoutParams
+            //LogUtils.debug("FileAdapter -> params: $params")
+            /*params.width = itemWidth()
+            params.height = itemWidth()*/
+            val params = ViewGroup.LayoutParams(itemWidth,itemWidth)
+
+            retView.layoutParams = params
+        }catch (e:Throwable){
+            e.printStackTrace()
         }
 
         when (fileList[position].type) {

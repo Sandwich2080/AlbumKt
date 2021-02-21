@@ -41,7 +41,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks,
         }
 
         val permissions = permissionsNeeded()
-        if (permissions.isEmpty() || EasyPermissions.hasPermissions(context!!, *permissions)) {
+        if (permissions.isEmpty() || EasyPermissions.hasPermissions(requireContext(), *permissions)) {
             init()
         } else {
             EasyPermissions.requestPermissions(
