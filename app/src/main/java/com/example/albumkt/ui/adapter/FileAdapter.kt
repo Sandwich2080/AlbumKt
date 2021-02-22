@@ -50,18 +50,9 @@ class FileAdapter(var act: Activity, var fileList: ArrayList<MediaFile>) : BaseA
             retView = convertView
             viewHolder = retView.tag as ViewHolder
         }
-
-        try {
-            //val params = retView.layoutParams
-            //LogUtils.debug("FileAdapter -> params: $params")
-            /*params.width = itemWidth()
-            params.height = itemWidth()*/
-            val params = ViewGroup.LayoutParams(itemWidth,itemWidth)
-
-            retView.layoutParams = params
-        }catch (e:Throwable){
-            e.printStackTrace()
-        }
+        // set item width and height
+        val params = ViewGroup.LayoutParams(itemWidth,itemWidth)
+        retView.layoutParams = params
 
         when (fileList[position].type) {
             MediaFile.TYPE_VIDEO -> {
