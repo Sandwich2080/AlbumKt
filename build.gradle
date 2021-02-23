@@ -5,7 +5,7 @@ buildscript {
     repositories {
 
         maven{ url 'https://maven.aliyun.com/repository/google'}
-        maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
+        //maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
         maven{ url 'https://maven.aliyun.com/repository/public'}
         maven{ url 'https://maven.aliyun.com/repository/jcenter'}
 
@@ -33,7 +33,7 @@ allprojects {
         maven { url "https://jitpack.io" }
 
         maven{ url 'https://maven.aliyun.com/repository/google'}
-        maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
+        //maven{ url 'https://maven.aliyun.com/repository/gradle-plugin'}
         maven{ url 'https://maven.aliyun.com/repository/public'}
         maven{ url 'https://maven.aliyun.com/repository/jcenter'}
 
