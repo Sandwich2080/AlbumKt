@@ -22,7 +22,6 @@ import com.example.albumkt.util.SettingsConfig
  */
 class LanguageSelectFragment : BaseFragment() {
 
-    // TODO: Customize parameters
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null

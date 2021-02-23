@@ -25,7 +25,6 @@ class FeedbackFragment : BaseFragment() {
     }
 
     override fun init() {
-        // TODO: 2019/12/5
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

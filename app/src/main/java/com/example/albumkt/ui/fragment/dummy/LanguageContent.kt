@@ -6,7 +6,6 @@ import java.util.*
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
  *
- * TODO: Replace all uses of this class before publishing your app.
  */
 object LanguageContent {
 
@@ -18,9 +17,9 @@ object LanguageContent {
     /**
      * A map of sample (dummy) items, by ID.
      */
-    val ITEM_MAP: MutableMap<String, LanguageItem> = HashMap()
+    private val ITEM_MAP: MutableMap<String, LanguageItem> = HashMap()
 
-    private val COUNT = 3
+    private const val COUNT = 3
 
     init {
         // Add some sample items.
@@ -31,7 +30,7 @@ object LanguageContent {
 
     private fun addItem(item: LanguageItem) {
         ITEMS.add(item)
-        ITEM_MAP.put(item.id, item)
+        ITEM_MAP[item.id] = item
     }
 
     private fun createLanguageItem(position: Int): LanguageItem {
