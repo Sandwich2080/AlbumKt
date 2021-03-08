@@ -70,7 +70,7 @@ class PreviewFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         photoView.let {
-            Glide.with(view.context).load(Uri.fromFile(File(file.path))).centerCrop().into(it)
+            Glide.with(view.context).load(Uri.fromFile(File(file.path))).centerInside().into(it)
         }
 
         if (file.type == MediaFile.TYPE_VIDEO) {
